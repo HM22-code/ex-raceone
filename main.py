@@ -1,5 +1,7 @@
 import pygame
 import configs
+import assets
+from objects.background import Background
 
 def main():
     
@@ -18,6 +20,12 @@ def main():
     #run loop
     running = True
     
+    assets.load_sprites()
+    
+    sprites = pygame.sprite.LayeredUpdates()
+    
+    Background(sprites)
+    
     while running:
 
         for event in pygame.event.get():
@@ -25,8 +33,11 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
                 pygame.quit()
+                break
     
         screen.fill("green")
+        
+        sprites.draw(screen)
         
         pygame.display.flip()
         clock.tick(configs.FPS)
