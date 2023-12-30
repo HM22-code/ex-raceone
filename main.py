@@ -2,6 +2,7 @@ import pygame
 import configs
 import assets
 from objects.background import Background
+from objects.floor import Floor
 
 def main():
     
@@ -26,6 +27,9 @@ def main():
     
     Background(0, sprites)
     Background(1, sprites)
+    
+    Floor(0, sprites)
+    Floor(1, sprites)
     
     while running:
 
