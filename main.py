@@ -24,7 +24,8 @@ def main():
     
     sprites = pygame.sprite.LayeredUpdates()
     
-    Background(sprites)
+    Background(0, sprites)
+    Background(1, sprites)
     
     while running:
 
@@ -38,6 +39,7 @@ def main():
         screen.fill("green")
         
         sprites.draw(screen)
+        sprites.update()
         
         pygame.display.flip()
         clock.tick(configs.FPS)
