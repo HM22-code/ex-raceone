@@ -10,6 +10,7 @@ def main():
     clock = pygame.time.Clock()
     running = True
     assets.load_sprites()
+    pygame.display.set_icon(assets.get_sprite("icon"))
     sprites = pygame.sprite.LayeredUpdates()
     Background(0, sprites)
     Background(1, sprites)
