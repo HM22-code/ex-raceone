@@ -37,7 +37,6 @@ def main():
 
             if event.type == pygame.QUIT:
                 running = False
-                pygame.quit()
                 break
     
         screen.fill("green")
@@ -47,6 +46,9 @@ def main():
         
         pygame.display.flip()
         clock.tick(configs.FPS)
+    
+    pygame.quit()
+    quit()
 
 
 if __name__ == "__main__":
