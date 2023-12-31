@@ -11,6 +11,7 @@ def main():
     running = True
     assets.load_sprites()
     pygame.display.set_icon(assets.get_sprite("icon"))
+    pygame.display.set_caption(configs.TITLE)
     sprites = pygame.sprite.LayeredUpdates()
     Background(0, sprites)
     Background(1, sprites)
