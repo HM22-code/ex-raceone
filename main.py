@@ -24,7 +24,6 @@ def main():
                 running = False
                 break
 
-        screen.fill("green")
         sprites.draw(screen)
         sprites.update()
         pygame.display.flip()
