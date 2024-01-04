@@ -4,6 +4,7 @@ import assets
 from objects.background import Background
 from objects.floor import Floor
 from objects.game_start_message import GameStartMessage
+from objects.player import Player
 
 def main():
     pygame.init()
@@ -19,6 +20,7 @@ def main():
     Floor(0, sprites)
     Floor(1, sprites)
     GameStartMessage(sprites)
+    Player(sprites)
     
     while running:
         for event in pygame.event.get():
