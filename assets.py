@@ -7,7 +7,7 @@ audios = {}
 def load_sprites():
     path = os.path.join(os.path.abspath(os.curdir), "assets", "sprites")
     for file in os.listdir(path):
-        sprites[file.split('.')[0]] = pygame.image.load(os.path.join(path, file))
+        sprites[file.split('.')[0]] = pygame.image.load(os.path.join(path, file)).convert_alpha()
         
 def get_sprite(name):
     return sprites[name]
