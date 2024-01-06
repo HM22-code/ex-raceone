@@ -12,6 +12,7 @@ def main():
     clock = pygame.time.Clock()
     running = True
     assets.load_sprites()
+    assets.load_audios()
     pygame.display.set_icon(assets.get_sprite("icon"))
     pygame.display.set_caption(configs.TITLE)
     sprites = pygame.sprite.LayeredUpdates()
@@ -21,6 +22,11 @@ def main():
     Floor(1, sprites)
     GameStartMessage(sprites)
     Player(sprites)
+    '''
+    music = assets.get_audio("menu")
+    music.set_volume(0.3)
+    music.play(loops = -1)
+    '''
     
     while running:
         for event in pygame.event.get():
