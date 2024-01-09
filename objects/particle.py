@@ -14,18 +14,23 @@ class Particle(pygame.sprite.Sprite):
     
     # [loc, velocity, timer]
     particles = []
+    color = (255, 255, 255)
     
-    def __init__(self, *groups):
+    def __init__(self, x, y, width, height,*groups):
         self._layer = Layer.PLAYER
+        self.image = pygame.Surface((width, height))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
         super().__init__(*groups)
         
     def update(self):
-        self.particles.append([[250, 250], [random.randint(0,20) / 10 - 1, -2], random.randint(4,6)])
+        self.particles.append([[self.rect.x, self.rect.y], [random.randint(0,20) / 10 - 1, -2], random.randint(4,6)])
         for particle in self.particles:
             particle[0][0] += particle[1][0]
             particle[0][1] += particle[1][1]
             particle[2] -= 0.1
             particle[1][1] += 0.1
-            pygame.draw.circle(self.rect, (255, 255, 255), [int(particle[0][0]), int(particle[0][1])], int(particle[2]))
+            pygame.draw.circle(self.rect, self.color, [int(particle[0][0]), int(particle[0][1])], int(particle[2]))
             if particle[2] <= 0:
                 self.particles.remove(particle)
