@@ -26,7 +26,7 @@ class Game():
         # Clock to controll FPS
         self.clock = pygame.time.Clock()
     
-    def main(self):
+    def run(self):
         # Sprite Groups
         sprites = pygame.sprite.LayeredUpdates()
         
