@@ -1,5 +1,5 @@
 import pygame.sprite
-from layer import Layer
+from layers import Layers
 import configs
 
 class Button(pygame.sprite.Sprite):
@@ -15,7 +15,7 @@ class Button(pygame.sprite.Sprite):
     BUTTON_SPACING = 20
     
     def __init__(self, x, y, width, height, text, *groups):
-        self._layer = Layer.UI
+        self._layer = Layers.UI
         self.image = pygame.Surface((width, height))
         self.rect = self.image.get_rect()
         self.rect.x = x

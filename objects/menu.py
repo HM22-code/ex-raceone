@@ -1,5 +1,5 @@
 import pygame.sprite
-from layer import Layer
+from layers import Layers
 import configs
 from objects.button import Button
 
@@ -11,7 +11,7 @@ class Menu(pygame.sprite.Sprite):
     active_button = 0
     
     def __init__(self, *groups):
-        self._layer = Layer.BACKGROUND
+        self._layer = Layers.BACKGROUND
         self.image = pygame.Surface((500, 500))
         self.rect = self.image.get_rect()
         self.buttons = []

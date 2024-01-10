@@ -2,7 +2,7 @@ import pygame.sprite
 import random
 import assets
 import configs
-from layer import Layer
+from layers import Layers
 
 class Particle(pygame.sprite.Sprite):
     
@@ -17,7 +17,7 @@ class Particle(pygame.sprite.Sprite):
     color = (255, 255, 255)
     
     def __init__(self, x, y, width, height,*groups):
-        self._layer = Layer.PLAYER
+        self._layer = Layers.PLAYER
         self.image = pygame.Surface((width, height))
         self.rect = self.image.get_rect()
         self.rect.x = x
