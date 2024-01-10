@@ -1,10 +1,9 @@
 import pygame
 import configs
 import assets
-from objects.background import Background
-from objects.floor import Floor
-from objects.game_start_message import GameStartMessage
-from objects.player import Player
+from objects.game_state_manager import GameStateManager
+from objects.level import Level
+from objects.start import Start
 
 class Game():
     
@@ -25,26 +24,14 @@ class Game():
         
         # Clock to controll FPS
         self.clock = pygame.time.Clock()
+        
+        # Init Game state manager
+        self.game_state_manager = GameStateManager('start')
+        self.start = Start(self.screen, self.game_state_manager)
+        self.level = Level(self.screen, self.game_state_manager)
+        self.states = {'start': self.start, 'level': self.level}
     
     def run(self):
-        # Sprite Groups
-        sprites = pygame.sprite.LayeredUpdates()
-        
-        # Create Game objects
-        Background(0, sprites)
-        Background(1, sprites)
-        Floor(0, sprites)
-        Floor(1, sprites)
-        GameStartMessage(sprites)
-        Player(sprites)
-        
-        # Background music
-        '''
-        music = assets.get_audio("menu")
-        music.set_volume(0.3)
-        music.play(loops = -1)
-        '''
-        
         # Game loop
         running = True
         while running:
@@ -53,9 +40,10 @@ class Game():
                     running = False
                     break
 
+            # State
+            self.states[self.game_state_manager.get_state()].run()
+            
             # Refresh the screen
-            sprites.draw(self.screen)
-            sprites.update()
             pygame.display.flip()
             
             # Control FPS
