@@ -26,10 +26,7 @@ class Game():
         self.clock = pygame.time.Clock()
         
         # Init Game state manager
-        self.game_state_manager = GameStateManager('start')
-        self.start = Start(self.screen, self.game_state_manager)
-        self.level = Level(self.screen, self.game_state_manager)
-        self.states = {'start': self.start, 'level': self.level}
+        self.game_state_manager = GameStateManager(self.screen)
     
     def run(self):
         # Game loop
@@ -41,7 +38,7 @@ class Game():
                     break
 
             # State
-            self.states[self.game_state_manager.get_state()].run()
+            self.game_state_manager.get_current_state().run()
             
             # Refresh the screen
             pygame.display.flip()
