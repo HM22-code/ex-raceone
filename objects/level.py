@@ -24,14 +24,17 @@ class Level(State):
         # Background music
         self.music = assets.get_audio("level1")
         self.music.set_volume(0.3)
-        self.music.play(loops = -1)
     
     def run(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_ESCAPE]:
-            self.music.stop()
             self.game_state_manager.set_state(self.game_state_manager.get_previous_state())
         
-        self.display.fill('red')
         self.sprites.draw(self.display)
         self.sprites.update()
+        
+    def enter_state(self):
+        self.music.play(loops = -1)
+    
+    def exit_state(self):
+        self.music.stop()

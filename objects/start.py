@@ -26,14 +26,17 @@ class Start(State):
         # Background music
         self.music = assets.get_audio("menu")
         self.music.set_volume(0.3)
-        self.music.play(loops = -1)
     
     def run(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RETURN]:
-            self.music.stop()
             self.game_state_manager.set_state(Level(self.display, self.game_state_manager))
         
-        self.display.fill('blue')
         self.sprites.draw(self.display)
         self.sprites.update()
+        
+    def enter_state(self):
+        self.music.play(loops = -1)
+    
+    def exit_state(self):
+        self.music.stop()

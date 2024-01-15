@@ -5,6 +5,7 @@ class GameStateManager():
     
     def __init__(self, display):
         self.current_state = Start(display, self)
+        self.current_state.enter_state()
         self.previous_state = None
         
     def get_current_state(self):
@@ -15,7 +16,7 @@ class GameStateManager():
     
     def set_state(self, state):
         self.previous_state = self.current_state
+        self.previous_state.exit_state()
         self.current_state = state
-        
-    # TODO: Manage creation and destruction of states + manage music play with states
+        self.current_state.enter_state()
     
