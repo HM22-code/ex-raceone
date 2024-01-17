@@ -1,7 +1,6 @@
 import pygame
 import assets
 from objects.level import Level
-from objects.player import Player
 from objects.background import Background
 from objects.floor import Floor
 from objects.game_start_message import GameStartMessage
