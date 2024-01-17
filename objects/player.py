@@ -8,10 +8,10 @@ class Player(pygame.sprite.Sprite):
     velocity = 5
     
     def __init__(self, *groups):
+        super().__init__(*groups)
         self._layer = Layers.PLAYER
         self.image = assets.get_sprite("player")
         self.rect = self.image.get_rect(bottomleft=(50, configs.SCREEN_HEIGHT-20))
-        super().__init__(*groups)
         
     def update(self):
         keys = pygame.key.get_pressed()

@@ -6,10 +6,10 @@ from layers import Layers
 class Background(pygame.sprite.Sprite):
     
     def __init__(self, index, *groups):
+        super().__init__(*groups)
         self._layer = Layers.BACKGROUND
         self.image = assets.get_sprite("background")
         self.rect = self.image.get_rect(topleft=(configs.SCREEN_WIDTH * index, 0))
-        super().__init__(*groups)
         
     def update(self):
         self.rect.x -= 2

@@ -11,13 +11,13 @@ class Menu(pygame.sprite.Sprite):
     active_button = 0
     
     def __init__(self, *groups):
+        super().__init__(*groups)
         self._layer = Layers.BACKGROUND
         self.image = pygame.Surface((500, 500))
         self.rect = self.image.get_rect()
         self.buttons = []
         self.button_sprites = pygame.sprite.Group()
         self.create_buttons()
-        super().__init__(*groups)
         
     def create_buttons(self):
         button_texts = ["Start", "Options", "Credits", "Quit"]

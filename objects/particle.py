@@ -17,12 +17,12 @@ class Particle(pygame.sprite.Sprite):
     color = (255, 255, 255)
     
     def __init__(self, x, y, width, height,*groups):
+        super().__init__(*groups)
         self._layer = Layers.PLAYER
         self.image = pygame.Surface((width, height))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        super().__init__(*groups)
         
     def update(self):
         self.particles.append([[self.rect.x, self.rect.y], [random.randint(0,20) / 10 - 1, -2], random.randint(4,6)])

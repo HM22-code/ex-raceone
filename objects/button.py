@@ -15,6 +15,7 @@ class Button(pygame.sprite.Sprite):
     BUTTON_SPACING = 20
     
     def __init__(self, x, y, width, height, text, *groups):
+        super().__init__(*groups)
         self._layer = Layers.UI
         self.image = pygame.Surface((width, height))
         self.rect = self.image.get_rect()
@@ -22,7 +23,6 @@ class Button(pygame.sprite.Sprite):
         self.rect.y = y
         self.text = text
         self.font = pygame.font.SysFont(None, 40)
-        super().__init__(*groups)
 
     def draw(self, screen, is_active):
         pygame.draw.rect(
