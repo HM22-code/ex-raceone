@@ -2,8 +2,6 @@ import pygame
 import configs
 import assets
 from objects.game_state_manager import GameStateManager
-from objects.level import Level
-from objects.start import Start
 
 class Game():
     
