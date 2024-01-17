@@ -1,7 +1,7 @@
 import pygame
 import configs
 import assets
-from objects.game_state_manager import GameStateManager
+from state_manager import StateManager
 
 class Game():
     
@@ -24,7 +24,7 @@ class Game():
         self.clock = pygame.time.Clock()
         
         # Init Game state manager
-        self.game_state_manager = GameStateManager(self.screen)
+        self.state_manager = StateManager(self.screen)
     
     def run(self):
         # Game loop
@@ -36,7 +36,7 @@ class Game():
                     break
 
             # State
-            self.game_state_manager.get_current_state().run()
+            self.state_manager.get_current_state().run()
             
             # Refresh the screen
             pygame.display.flip()

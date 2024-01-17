@@ -1,16 +1,16 @@
 import pygame
 import assets
-from objects.level import Level
+from states.level import Level
 from objects.background import Background
 from objects.floor import Floor
 from objects.game_start_message import GameStartMessage
-from objects.state import State
+from classes.state import State
 
 class Start(State):
     
-    def __init__(self, display, game_state_manager):
+    def __init__(self, display, state_manager):
         self.display = display
-        self.game_state_manager = game_state_manager
+        self.state_manager = state_manager
         
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
@@ -29,7 +29,7 @@ class Start(State):
     def run(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RETURN]:
-            self.game_state_manager.set_state(Level(self.display, self.game_state_manager))
+            self.state_manager.set_state(Level(self.display, self.state_manager))
         
         self.sprites.draw(self.display)
         self.sprites.update()

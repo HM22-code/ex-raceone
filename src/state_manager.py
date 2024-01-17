@@ -1,7 +1,7 @@
-from objects.start import Start
+from states.start import Start
 
 
-class GameStateManager():
+class StateManager():
     
     def __init__(self, display):
         self.current_state = Start(display, self)
