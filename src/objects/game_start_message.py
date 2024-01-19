@@ -4,6 +4,11 @@ import configs
 from layers import Layers
 
 class GameStartMessage(pygame.sprite.Sprite):
+    """ GameStartMessage sprite class
+
+    Args:
+        pygame (_type_): sprite
+    """
     
     def __init__(self, *groups):
         super().__init__(*groups)

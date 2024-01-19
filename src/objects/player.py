@@ -4,6 +4,11 @@ import configs
 from layers import Layers
 
 class Player(pygame.sprite.Sprite):
+    """ Player sprite class
+
+    Args:
+        pygame (_type_): sprite
+    """
     
     velocity = 5
     

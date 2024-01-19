@@ -4,6 +4,11 @@ import configs
 from layers import Layers
 
 class Background(pygame.sprite.Sprite):
+    """ Background sprite class
+
+    Args:
+        pygame (_type_): sprite
+    """
     
     def __init__(self, index, *groups):
         super().__init__(*groups)

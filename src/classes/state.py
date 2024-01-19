@@ -1,23 +1,21 @@
 class State():
+    """ State class for all states
+    """
     
     def __init__(self, game):
         self.game = game
-        self.prev_state = None
         
     def run(self):
-        '''
-        Running in game loop
-        '''
+        """ Called on every frames
+        """
         pass
     
     def enter_state(self):
-        '''
-        Running start
-        '''
+        """ Called when the state becomes the current state
+        """
         pass
     
     def exit_state(self):
-        '''
-        Running end
-        '''
+        """ Called when the state is no longer the current state
+        """
         pass

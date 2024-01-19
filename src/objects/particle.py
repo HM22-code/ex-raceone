@@ -5,13 +5,11 @@ import configs
 from layers import Layers
 
 class Particle(pygame.sprite.Sprite):
-    
     # a particle is...
     # a thing that exists at a location
     # typically moves around
     # typically changes over time
     # and typically disappears after a certain amount of time
-    
     # [loc, velocity, timer]
     particles = []
     color = (255, 255, 255)
