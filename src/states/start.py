@@ -3,7 +3,7 @@ import assets
 from states.level import Level
 from objects.background import Background
 from objects.floor import Floor
-from objects.game_start_message import GameStartMessage
+from objects.title import Title
 from classes.state import State
 
 class Start(State):
@@ -22,7 +22,7 @@ class Start(State):
         Background(1, self.sprites)
         Floor(0, self.sprites)
         Floor(1, self.sprites)
-        GameStartMessage(self.sprites)
+        Title(self.sprites)
         # Background music
         self.music = assets.get_audio("menu")
         self.music.set_volume(0.3)

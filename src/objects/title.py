@@ -3,8 +3,8 @@ import assets
 import configs
 from layers import Layers
 
-class GameStartMessage(pygame.sprite.Sprite):
-    """ GameStartMessage sprite class
+class Title(pygame.sprite.Sprite):
+    """ Title sprite class
 
     Args:
         pygame (_type_): sprite
