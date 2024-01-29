@@ -1,5 +1,7 @@
 import pygame
 import assets
+import configs
+from objects.button import Button
 from states.level import Level
 from objects.background import Background
 from objects.floor import Floor
@@ -13,6 +15,10 @@ class Start(State):
         State (_type_): state
     """
     
+    BUTTON_WIDTH = 200
+    BUTTON_HEIGHT = 50
+    BUTTON_SPACING = 20
+    
     def __init__(self, game):
         super().__init__(game)
         # Sprite Groups
@@ -23,9 +29,22 @@ class Start(State):
         Floor(0, self.sprites)
         Floor(1, self.sprites)
         Title(self.sprites)
+        # Adding buttons
+        self.create_buttons()
         # Background music
         self.music = assets.get_audio("menu")
         self.music.set_volume(0.3)
+        
+    def create_buttons(self):
+        buttons = []
+        button_texts = ["Start", "Options", "Credits", "Quit"]
+        button_total_height = len(button_texts) * (self.BUTTON_HEIGHT + self.BUTTON_SPACING)
+        starting_x = (configs.SCREEN_WIDTH - self.BUTTON_WIDTH) // 2
+        starting_y = (configs.SCREEN_HEIGHT - button_total_height) // 2
+        for text in button_texts:
+            button = Button(starting_x, starting_y, self.BUTTON_WIDTH, self.BUTTON_HEIGHT, text, self.sprites)
+            starting_y += self.BUTTON_HEIGHT + self.BUTTON_SPACING
+            buttons.append(button)
     
     def run(self):
         # Input
