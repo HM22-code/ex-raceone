@@ -60,6 +60,8 @@ class Start(State):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.buttons[0].rect.collidepoint((mx, my)):
                 self.game.set_state(Level(self.game))
+            if self.buttons[3].rect.collidepoint((mx, my)):
+                self.game.quit()
         
     def enter_state(self):
         self.music.play(loops = -1)

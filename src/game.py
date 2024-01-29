@@ -23,6 +23,7 @@ class Game():
         self.clock = pygame.time.Clock()
         # Init Game state manager
         self.init_state()
+        # Init game running
         self.running = True
         
     def init_state(self):
@@ -60,20 +61,25 @@ class Game():
         self.current_state.enter_state()
     
     def run(self):
-        # Game loop
-        
+        """ Game loop
+        """
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.running = False
-                    break
-                # States event
+                    self.quit()
+                # Current state event handling
                 self.get_current_state().handle_event(event)
-            # States update
+            # Current state update
             self.get_current_state().run()
             # Refresh the screen
             pygame.display.flip()
             # Control FPS
             self.clock.tick(configs.FPS)
+            
+    def quit(self):
+        """ Quit game program
+        """
+        self.running = False
         pygame.quit()
         sys.exit()
+        
