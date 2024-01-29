@@ -23,6 +23,7 @@ class Game():
         self.clock = pygame.time.Clock()
         # Init Game state manager
         self.init_state()
+        self.running = True
         
     def init_state(self):
         """ Init state
@@ -60,13 +61,15 @@ class Game():
     
     def run(self):
         # Game loop
-        running = True
-        while running:
+        
+        while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    running = False
+                    self.running = False
                     break
-            # States
+                # States event
+                self.get_current_state().handle_event(event)
+            # States update
             self.get_current_state().run()
             # Refresh the screen
             pygame.display.flip()

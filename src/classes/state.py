@@ -19,3 +19,8 @@ class State():
         """ Called when the state is no longer the current state
         """
         pass
+    
+    def handle_event(self, event):
+        """ Handle event for the current state
+        """
+        pass

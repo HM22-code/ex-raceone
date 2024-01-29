@@ -30,13 +30,14 @@ class Start(State):
         Floor(1, self.sprites)
         Title(self.sprites)
         # Adding buttons
+        self.buttons = []
         self.create_buttons()
         # Background music
         self.music = assets.get_audio("menu")
         self.music.set_volume(0.3)
         
     def create_buttons(self):
-        buttons = []
+        
         button_texts = ["Start", "Options", "Credits", "Quit"]
         button_total_height = len(button_texts) * (self.BUTTON_HEIGHT + self.BUTTON_SPACING)
         starting_x = (configs.SCREEN_WIDTH - self.BUTTON_WIDTH) // 2
@@ -44,17 +45,21 @@ class Start(State):
         for text in button_texts:
             button = Button(starting_x, starting_y, self.BUTTON_WIDTH, self.BUTTON_HEIGHT, text, self.sprites)
             starting_y += self.BUTTON_HEIGHT + self.BUTTON_SPACING
-            buttons.append(button)
+            self.buttons.append(button)
     
     def run(self):
-        # Input
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_RETURN]:
-            self.game.set_state(Level(self.game))
         # Draw
         self.sprites.draw(self.game.screen)
         # Update
         self.sprites.update()
+        
+    def handle_event(self, event):
+        mx, my = pygame.mouse.get_pos()
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+            self.game.set_state(Level(self.game))
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.buttons[0].rect.collidepoint((mx, my)):
+                self.game.set_state(Level(self.game))
         
     def enter_state(self):
         self.music.play(loops = -1)
