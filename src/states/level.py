@@ -27,14 +27,14 @@ class Level(State):
         self.music.set_volume(0.3)
     
     def run(self):
-        # Input
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_ESCAPE]:
-            self.game.set_state(self.game.get_previous_state())
         # Draw
         self.sprites.draw(self.game.screen)
         # Update
         self.sprites.update()
+        
+    def handle_event(self, event):
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            self.game.set_state(self.game.get_previous_state())
         
     def enter_state(self):
         self.music.play(loops = -1)
