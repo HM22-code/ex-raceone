@@ -1,2 +1,7 @@
 from game import Game
-Game().run()
+
+def main():
+    Game().run()
+    
+if __name__ == '__main__':
+    main()
