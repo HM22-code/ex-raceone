@@ -69,11 +69,11 @@ class Game():
                     self.quit()
                 # Current state event handling
                 self.get_current_state().handle_event(event)
-            # Current state update
+            # Current state update (RENDER GAME)
             self.get_current_state().run()
-            # Refresh the screen
+            # Update the full display Surface to the screen
             pygame.display.flip()
-            # Control FPS
+            # Limits FPS to 60
             self.clock.tick(configs.FPS)
             
     def quit(self):
