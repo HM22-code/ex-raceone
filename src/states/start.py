@@ -24,10 +24,7 @@ class Start(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        Background(0, self.sprites)
-        Background(1, self.sprites)
-        Floor(0, self.sprites)
-        Floor(1, self.sprites)
+        Background(self.sprites)
         Title(self.sprites)
         # Adding buttons
         self.buttons = []

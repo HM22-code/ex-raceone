@@ -17,10 +17,7 @@ class Level(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        Background(0, self.sprites)
-        Background(1, self.sprites)
-        Floor(0, self.sprites)
-        Floor(1, self.sprites)
+        Background(self.sprites)
         Player(self.sprites)
         # Background music
         self.music = assets.get_audio("level1")
