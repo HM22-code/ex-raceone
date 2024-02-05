@@ -2,11 +2,13 @@ import pygame
 import assets
 import configs
 from objects.button import Button
+from states.ending import Ending
 from states.level import Level
 from objects.background import Background
 from objects.floor import Floor
 from objects.title import Title
 from classes.state import State
+from states.option import Option
 
 class Start(State):
     """ Start state class
@@ -57,6 +59,10 @@ class Start(State):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.buttons[0].rect.collidepoint((mx, my)):
                 self.game.set_state(Level(self.game))
+            if self.buttons[1].rect.collidepoint((mx, my)):
+                self.game.set_state(Option(self.game))
+            if self.buttons[2].rect.collidepoint((mx, my)):
+                self.game.set_state(Ending(self.game))
             if self.buttons[3].rect.collidepoint((mx, my)):
                 self.game.quit()
         
