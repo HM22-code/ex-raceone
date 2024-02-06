@@ -2,7 +2,6 @@ import pygame
 import assets
 from objects.player import Player
 from objects.background import Background
-from objects.floor import Floor
 from classes.state import State
 
 class Level(State):
