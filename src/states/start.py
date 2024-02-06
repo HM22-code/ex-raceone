@@ -3,11 +3,10 @@ import assets
 import configs
 from objects.button import Button
 from states.ending import Ending
-from states.level import Level
 from objects.background import Background
-from objects.floor import Floor
 from objects.title import Title
 from classes.state import State
+from states.menu import Menu
 from states.option import Option
 
 class Start(State):
@@ -54,11 +53,9 @@ class Start(State):
         
     def handle_event(self, event):
         mx, my = pygame.mouse.get_pos()
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-            self.game.set_state(Level(self.game))
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.buttons[0].rect.collidepoint((mx, my)):
-                self.game.set_state(Level(self.game))
+                self.game.set_state(Menu(self.game))
             if self.buttons[1].rect.collidepoint((mx, my)):
                 self.game.set_state(Option(self.game))
             if self.buttons[2].rect.collidepoint((mx, my)):
