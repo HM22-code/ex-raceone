@@ -19,7 +19,7 @@ class Game():
         # Screen options
         pygame.display.set_icon(assets.get_sprite("icon"))
         pygame.display.set_caption(configs.TITLE)
-        # Clock to controll FPS
+        # Clock to control FPS
         self.clock = pygame.time.Clock()
         # Init Game state manager
         self.init_state()

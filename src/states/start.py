@@ -35,7 +35,8 @@ class Start(State):
         self.music.set_volume(0.3)
         
     def create_buttons(self):
-        
+        """ Create buttons objects
+        """
         button_texts = ["Start", "Options", "Credits", "Quit"]
         button_total_height = len(button_texts) * (self.BUTTON_HEIGHT + self.BUTTON_SPACING)
         starting_x = (configs.SCREEN_WIDTH - self.BUTTON_WIDTH) // 2

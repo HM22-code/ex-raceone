@@ -11,6 +11,11 @@ from states.start import Start
 
 
 class Menu(State):
+    """ Menu state class
+
+    Args:
+        State (_type_): state
+    """
     
     BUTTON_WIDTH = 200
     BUTTON_HEIGHT = 50
@@ -28,7 +33,8 @@ class Menu(State):
         self.create_buttons()
         
     def create_buttons(self):
-        
+        """ Create buttons objects
+        """
         button_texts = ["Level 1", "Level 2", "Level 3"]
         button_total_height = len(button_texts) * (self.BUTTON_HEIGHT + self.BUTTON_SPACING)
         starting_x = (configs.SCREEN_WIDTH - self.BUTTON_WIDTH) // 2
