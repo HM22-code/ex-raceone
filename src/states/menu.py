@@ -7,8 +7,6 @@ from objects.title import Title
 from states.level import Level
 from states.level_three import LevelThree
 from states.level_two import LevelTwo
-from states.start import Start
-
 
 class Menu(State):
     """ Menu state class
@@ -52,8 +50,6 @@ class Menu(State):
     
     def handle_event(self, event):
         mx, my = pygame.mouse.get_pos()
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            self.game.set_state(Start(self.game))
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.buttons[0].rect.collidepoint((mx, my)):
                 self.game.set_state(Level(self.game))

@@ -4,11 +4,13 @@ import assets
 import sys
 from states.start import Start
 
-class Game():
+class Game:
     """ Game class
     """
     
     def __init__(self):
+        # Init game running
+        self.running = True
         # Initialize Pygame
         pygame.init()
         # Create the screen
@@ -23,8 +25,7 @@ class Game():
         self.clock = pygame.time.Clock()
         # Init Game state manager
         self.init_state()
-        # Init game running
-        self.running = True
+        
         
     def init_state(self):
         """ Init state
@@ -82,4 +83,6 @@ class Game():
         self.running = False
         pygame.quit()
         sys.exit()
+        
+Game().run()
         
