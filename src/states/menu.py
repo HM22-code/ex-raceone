@@ -27,9 +27,31 @@ class Menu(State):
         Background(self.sprites)
         Title(self.sprites)
         # Adding buttons
+        self.menu_items = [
+            {
+                'title' : 'Level 1',
+                'action' : lambda: self.load_level(),
+                'scene' : Level(self.game) 
+            },
+            {
+                'title' : 'Level 2',
+                'action' : lambda: self.load_level(),
+                'scene' : LevelTwo(self.game) 
+            },
+            {
+                'title' : 'Level 3',
+                'action' : lambda: self.load_level(),
+                'scene' : LevelThree(self.game) 
+            }
+        ]
         self.buttons = []
         self.create_buttons()
         
+    def load_level(self):
+        """ TODO: Adding menu items feature to get a sprite menu builder
+        """
+        pass
+    
     def create_buttons(self):
         """ Create buttons objects
         """
