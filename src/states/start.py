@@ -64,4 +64,4 @@ class Start(State):
         self.music.play(loops = -1)
     
     def exit_state(self):
-        self.music.stop()
+        self.music.fadeout(1000)

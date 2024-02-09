@@ -66,14 +66,15 @@ The entitity can commands to this state group, and the state group will take car
    - Jeux style du dinosaure en ligne
    - style scrolling permanent
    - style retro arcade 8-bit 16-bit
-   - style metal slug
+   - style alto adventure
 
  - 2 routes parallèles pour esquiver des obstacles en changeant de route
 
  - Objectifs aller le plus loin possible
    - ou terminer le niveau
    - niveaux prédéfinis/ construit  avec tiles ?
-   - Ehapper à la police du futur
+   - éviter les obstacles
+   - side scrolling race game
 
  - Environnement et ressources: 
    - futuriste,
@@ -97,15 +98,12 @@ The entitity can commands to this state group, and the state group will take car
  - Idéees
    - voir le déclun de la terre
    - planetes futuriste et post apo cyber
-   - avec véhicule animée qui va vite et échappe à la police
-   - perso du jeux afficher
+   - lore + commandes expliquer bulle de texte sur fondu
 
  - Crédits
 
  - ++ Bonus:
-   - Coeur
-   - Shoot
-   - Menu personalisation véhicule 
+   - Score 
    - Menu Option
 
  - 3 différents niveaux Difficulté croissante
