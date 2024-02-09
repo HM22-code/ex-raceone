@@ -48,8 +48,7 @@ class Menu(State):
         self.create_buttons()
         
     def load_level(self):
-        """ TODO: Adding menu items feature to get a sprite menu builder
-        """
+        # TODO: Adding menu items feature to get a sprite menu builder
         pass
     
     def create_buttons(self):
