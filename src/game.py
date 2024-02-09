@@ -61,6 +61,18 @@ class Game:
         self.current_state = state
         self.current_state.enter_state()
     
+    def process_input(self):
+        # TODO: Process event input
+        pass
+    
+    def update(self):
+        # TODO: Process update
+        pass
+    
+    def render(self):
+        # TODO: Process render
+        pass
+    
     def run(self):
         """ Game loop
         """

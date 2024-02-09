@@ -10,6 +10,18 @@ class State():
         """
         pass
     
+    def process_input(self):
+        # TODO: Process event input
+        pass
+    
+    def update(self):
+        # TODO: Process update
+        pass
+    
+    def render(self):
+        # TODO: Process render
+        pass
+    
     def enter_state(self):
         """ Called when the state becomes the current state
         """
