@@ -15,10 +15,6 @@ class Menu(State):
         State (_type_): state
     """
     
-    BUTTON_WIDTH = 200
-    BUTTON_HEIGHT = 50
-    BUTTON_SPACING = 20
-    
     def __init__(self, game):
         super().__init__(game)
         # Sprite Groups
@@ -55,12 +51,12 @@ class Menu(State):
         """ Create buttons objects
         """
         button_texts = ["Level 1", "Level 2", "Level 3"]
-        button_total_height = len(button_texts) * (self.BUTTON_HEIGHT + self.BUTTON_SPACING)
-        starting_x = (configs.SCREEN_WIDTH - self.BUTTON_WIDTH) // 2
+        button_total_height = len(button_texts) * (configs.BUTTON_HEIGHT + configs.BUTTON_SPACING)
+        starting_x = (configs.SCREEN_WIDTH - configs.BUTTON_WIDTH) // 2
         starting_y = (configs.SCREEN_HEIGHT - button_total_height) // 2
         for text in button_texts:
-            button = Button(starting_x, starting_y, self.BUTTON_WIDTH, self.BUTTON_HEIGHT, text, self.sprites)
-            starting_y += self.BUTTON_HEIGHT + self.BUTTON_SPACING
+            button = Button(starting_x, starting_y, configs.BUTTON_WIDTH, configs.BUTTON_HEIGHT, text, self.sprites)
+            starting_y += configs.BUTTON_HEIGHT + configs.BUTTON_SPACING
             self.buttons.append(button)
             
     def run(self):
