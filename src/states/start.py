@@ -94,3 +94,4 @@ class Start(State):
     
     def exit_state(self):
         self.music.fadeout(1000)
+        self.fadein()
