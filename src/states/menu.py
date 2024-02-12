@@ -23,39 +23,40 @@ class Menu(State):
         Background(self.sprites)
         Title(self.sprites)
         # Adding buttons
-        self.menu_items = [
-            {
-                'title' : 'Level 1',
-                'action' : lambda: self.load_level(),
-                'scene' : Level(self.game) 
-            },
-            {
-                'title' : 'Level 2',
-                'action' : lambda: self.load_level(),
-                'scene' : LevelTwo(self.game) 
-            },
-            {
-                'title' : 'Level 3',
-                'action' : lambda: self.load_level(),
-                'scene' : LevelThree(self.game) 
-            }
-        ]
         self.buttons = []
         self.create_buttons()
         
-    def load_level(self):
-        # TODO: Adding menu items feature to get a sprite menu builder
-        pass
+    def level1(self):
+        self.game.set_state(Level(self.game))
+    
+    def level2(self):
+        self.game.set_state(LevelTwo(self.game))
+    
+    def level3(self):
+        self.game.set_state(LevelThree(self.game))
     
     def create_buttons(self):
         """ Create buttons objects
         """
-        button_texts = ["Level 1", "Level 2", "Level 3"]
-        button_total_height = len(button_texts) * (configs.BUTTON_HEIGHT + configs.BUTTON_SPACING)
+        menu_items = [
+            {
+                'title' : 'Level 1',
+                'action' : lambda: self.level1(),
+            },
+            {
+                'title' : 'Level 2',
+                'action' : lambda: self.level2(),
+            },
+            {
+                'title' : 'Level 3',
+                'action' : lambda: self.level3(),
+            }
+        ]
+        button_total_height = len(menu_items) * (configs.BUTTON_HEIGHT + configs.BUTTON_SPACING)
         starting_x = (configs.SCREEN_WIDTH - configs.BUTTON_WIDTH) // 2
         starting_y = (configs.SCREEN_HEIGHT - button_total_height) // 2
-        for text in button_texts:
-            button = Button(starting_x, starting_y, configs.BUTTON_WIDTH, configs.BUTTON_HEIGHT, text, self.sprites)
+        for item in menu_items:
+            button = Button(starting_x, starting_y, configs.BUTTON_WIDTH, configs.BUTTON_HEIGHT, item["title"], item["action"], self.sprites)
             starting_y += configs.BUTTON_HEIGHT + configs.BUTTON_SPACING
             self.buttons.append(button)
             
@@ -67,13 +68,15 @@ class Menu(State):
     
     def handle_event(self, event):
         mx, my = pygame.mouse.get_pos()
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if self.buttons[0].rect.collidepoint((mx, my)):
-                self.game.set_state(Level(self.game))
-            if self.buttons[1].rect.collidepoint((mx, my)):
-                self.game.set_state(LevelTwo(self.game))
-            if self.buttons[2].rect.collidepoint((mx, my)):
-                self.game.set_state(LevelThree(self.game))
+        for button in self.buttons:
+            # Check if hover
+            if button.rect.collidepoint((mx, my)):
+                # Check if click
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    button.action()
+                button.active = True
+            else: 
+                button.active = False
             
         
     
