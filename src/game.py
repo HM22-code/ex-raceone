@@ -26,7 +26,6 @@ class Game:
         # Init Game state manager
         self.init_state()
         
-        
     def init_state(self):
         """ Init state
         """
@@ -62,30 +61,31 @@ class Game:
         self.current_state.enter_state()
     
     def process_input(self):
-        # TODO: Process event input
-        pass
+        """ Process input event
+        """
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.quit()
+            # Current state event handling
+            self.get_current_state().handle_event(event)
     
     def update(self):
-        # TODO: Process update
-        pass
+        """ Current state update
+        """
+        self.get_current_state().run()
     
     def render(self):
-        # TODO: Process render
-        pass
+        """ Update the full display Surface to the screen
+        """
+        pygame.display.flip()
     
     def run(self):
         """ Game loop
         """
         while self.running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.quit()
-                # Current state event handling
-                self.get_current_state().handle_event(event)
-            # Current state update (RENDER GAME)
-            self.get_current_state().run()
-            # Update the full display Surface to the screen
-            pygame.display.flip()
+            self.process_input()
+            self.update()
+            self.render()
             # Limits FPS to 60
             self.clock.tick(configs.FPS)
             

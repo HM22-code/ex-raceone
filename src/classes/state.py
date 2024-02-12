@@ -14,15 +14,18 @@ class State():
         pass
     
     def process_input(self):
-        # TODO: Process event input
+        """ Called to process input event for the current state
+        """
         pass
     
     def update(self):
-        # TODO: Process update
+        """ Called on every frames to update the current state screen
+        """
         pass
     
     def render(self):
-        # TODO: Process render
+        """ Called on every frames to render graphics for the current state
+        """
         pass
     
     def enter_state(self):
