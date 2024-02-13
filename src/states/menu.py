@@ -71,10 +71,10 @@ class Menu(State):
         for button in self.buttons:
             # Check if hover
             if button.rect.collidepoint((mx, my)):
+                button.active = True
                 # Check if click
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     button.action()
-                button.active = True
             else: 
                 button.active = False
             
