@@ -4,7 +4,7 @@ from objects.player import Player
 from objects.background import Background
 from classes.state import State
 
-class LevelTwo(State):
+class Level1(State):
     """ Level state class
 
     Args:
@@ -19,7 +19,7 @@ class LevelTwo(State):
         Background(self.sprites)
         Player(self.sprites)
         # Background music
-        self.music = assets.get_audio("level2")
+        self.music = assets.get_audio("level1")
         self.music.set_volume(0.3)
     
     def run(self):

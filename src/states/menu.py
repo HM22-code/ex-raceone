@@ -4,9 +4,9 @@ from classes.state import State
 from objects.background import Background
 from objects.button import Button
 from objects.title import Title
-from states.level import Level
-from states.level_three import LevelThree
-from states.level_two import LevelTwo
+from states.level1 import Level1
+from states.level2 import Level2
+from states.level3 import Level3
 
 class Menu(State):
     """ Menu state class
@@ -27,13 +27,13 @@ class Menu(State):
         self.create_buttons()
         
     def level1(self):
-        self.game.set_state(Level(self.game))
+        self.game.set_state(Level1(self.game))
     
     def level2(self):
-        self.game.set_state(LevelTwo(self.game))
+        self.game.set_state(Level2(self.game))
     
     def level3(self):
-        self.game.set_state(LevelThree(self.game))
+        self.game.set_state(Level3(self.game))
     
     def create_buttons(self):
         """ Create buttons objects
