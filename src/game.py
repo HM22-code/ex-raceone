@@ -87,7 +87,7 @@ class Game:
             self.update()
             self.render()
             # Limits FPS to 60
-            self.clock.tick(configs.FPS)
+            self.delta = self.clock.tick(configs.FPS)
             
     def quit(self):
         """ Quit game program
