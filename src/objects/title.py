@@ -1,7 +1,7 @@
 import pygame.sprite
 import assets
 import configs
-from layers import Layers
+from enums.layers import Layers
 
 class Title(pygame.sprite.Sprite):
     """ Title sprite class

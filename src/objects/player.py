@@ -1,7 +1,7 @@
 import pygame.sprite
 import assets
 import configs
-from layers import Layers
+from enums.layers import Layers
 
 class Player(pygame.sprite.Sprite):
     """ Player sprite class

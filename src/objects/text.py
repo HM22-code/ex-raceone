@@ -1,7 +1,7 @@
 import pygame.sprite
 import configs
 import assets
-from layers import Layers
+from enums.layers import Layers
 
 class Text(pygame.sprite.Sprite):
     """ Text sprite class

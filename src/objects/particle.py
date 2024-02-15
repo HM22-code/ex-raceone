@@ -2,7 +2,7 @@ import pygame.sprite
 import random
 import assets
 import configs
-from layers import Layers
+from enums.layers import Layers
 
 class Particle(pygame.sprite.Sprite):
     # a particle is...

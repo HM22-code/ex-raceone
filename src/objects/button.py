@@ -1,5 +1,5 @@
 import pygame.sprite
-from layers import Layers
+from enums.layers import Layers
 import configs
 from objects.text import Text
 
