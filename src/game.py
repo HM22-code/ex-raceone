@@ -95,6 +95,3 @@ class Game:
         self.running = False
         pygame.quit()
         sys.exit()
-        
-Game().run()
-        
