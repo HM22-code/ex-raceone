@@ -1,5 +1,4 @@
 import pygame.sprite
-import configs
 import assets
 from enums.layers import Layers
 

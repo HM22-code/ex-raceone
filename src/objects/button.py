@@ -1,6 +1,5 @@
 import pygame.sprite
 from enums.layers import Layers
-import configs
 from objects.text import Text
 
 class Button(pygame.sprite.Sprite):

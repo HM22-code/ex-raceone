@@ -1,5 +1,4 @@
 import pygame
-import assets
 from classes.state import State
 from objects.background import Background
 

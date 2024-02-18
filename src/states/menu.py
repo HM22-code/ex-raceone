@@ -1,5 +1,6 @@
 import pygame
-import configs
+import configs.button
+import configs.screen
 from classes.state import State
 from objects.background import Background
 from objects.button import Button
@@ -52,12 +53,12 @@ class Menu(State):
                 'action' : lambda: self.level3(),
             }
         ]
-        button_total_height = len(menu_items) * (configs.BUTTON_HEIGHT + configs.BUTTON_SPACING)
-        starting_x = (configs.SCREEN_WIDTH - configs.BUTTON_WIDTH) // 2
-        starting_y = (configs.SCREEN_HEIGHT - button_total_height) // 2
+        button_total_height = len(menu_items) * (configs.button.BUTTON_HEIGHT + configs.button.BUTTON_SPACING)
+        starting_x = (configs.screen.SCREEN_WIDTH - configs.button.BUTTON_WIDTH) // 2
+        starting_y = (configs.screen.SCREEN_HEIGHT - button_total_height) // 2
         for item in menu_items:
-            button = Button(starting_x, starting_y, configs.BUTTON_WIDTH, configs.BUTTON_HEIGHT, item["title"], item["action"], self.sprites)
-            starting_y += configs.BUTTON_HEIGHT + configs.BUTTON_SPACING
+            button = Button(starting_x, starting_y, configs.button.BUTTON_WIDTH, configs.button.BUTTON_HEIGHT, item["title"], item["action"], self.sprites)
+            starting_y += configs.button.BUTTON_HEIGHT + configs.button.BUTTON_SPACING
             self.buttons.append(button)
             
     def run(self):

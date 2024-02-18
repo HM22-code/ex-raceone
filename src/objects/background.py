@@ -1,6 +1,5 @@
 import pygame.sprite
 import assets
-import configs
 from enums.layers import Layers
 
 class Background(pygame.sprite.Sprite):

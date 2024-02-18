@@ -1,5 +1,5 @@
 import pygame
-import configs
+import configs.screen
 import assets
 import sys
 from states.start import Start
@@ -14,13 +14,13 @@ class Game:
         # Initialize Pygame
         pygame.init()
         # Create the screen
-        self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
+        self.screen = pygame.display.set_mode((configs.screen.SCREEN_WIDTH, configs.screen.SCREEN_HEIGHT))
         # Loading assets
         assets.load_sprites()
         assets.load_audios()
         # Screen options
         pygame.display.set_icon(assets.get_sprite("icon"))
-        pygame.display.set_caption(configs.TITLE)
+        pygame.display.set_caption(configs.screen.TITLE)
         # Clock to control FPS
         self.clock = pygame.time.Clock()
         # Init Game state manager
@@ -87,7 +87,7 @@ class Game:
             self.update()
             self.render()
             # Limits FPS to 60
-            self.delta = self.clock.tick(configs.FPS)
+            self.delta = self.clock.tick(configs.screen.FPS)
             
     def quit(self):
         """ Quit game program
