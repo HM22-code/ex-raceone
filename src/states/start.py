@@ -6,7 +6,7 @@ from objects.button import Button
 from states.ending import Ending
 from objects.background import Background
 from objects.title import Title
-from classes.state import State
+from interfaces.state import State
 from states.menu import Menu
 from states.option import Option
 
@@ -96,3 +96,18 @@ class Start(State):
     def exit_state(self):
         self.music.fadeout(1000)
         self.fadein()
+        
+    def process_input(self):
+        super().process_input()
+    
+    def render(self):
+        super().render()
+    
+    def update(self):
+        super().update()
+    
+    def fadein(self):
+        super().fadein()
+    
+    def fadeout(self):
+        super().fadeout()

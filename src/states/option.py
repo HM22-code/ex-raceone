@@ -1,5 +1,5 @@
 import pygame
-from classes.state import State
+from interfaces.state import State
 from objects.background import Background
 
 
@@ -29,3 +29,21 @@ class Option(State):
             
     def enter_state(self):
         self.fadeout()
+    
+    def exit_state(self):
+        super().exit_state()    
+        
+    def process_input(self):
+        super().process_input()
+    
+    def render(self):
+        super().render()
+    
+    def update(self):
+        super().update()
+    
+    def fadein(self):
+        super().fadein()
+    
+    def fadeout(self):
+        super().fadeout()

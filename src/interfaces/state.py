@@ -1,48 +1,57 @@
 import pygame
 import configs.screen
+from abc import ABC, abstractmethod
 
-class State():
+class State(ABC):
     """ State class for all states
     """
     
     def __init__(self, game):
         self.game = game
-        
+     
+    @abstractmethod   
     def run(self):
         """ Called on every frames
         """
         pass
     
+    @abstractmethod 
     def process_input(self):
         """ Called to process input event for the current state
         """
         pass
     
+    @abstractmethod 
     def update(self):
         """ Called on every frames to update the current state screen
         """
         pass
     
+    @abstractmethod 
     def render(self):
         """ Called on every frames to render graphics for the current state
         """
         pass
     
+    @abstractmethod 
     def enter_state(self):
         """ Called when the state becomes the current state
         """
         pass
     
+    @abstractmethod 
     def exit_state(self):
         """ Called when the state is no longer the current state
         """
         pass
     
+    @abstractmethod 
     def handle_event(self, event):
         """ Handle event for the current state
         """
         pass
     
+    @abstractmethod 
     def fadein(self):
         fade = pygame.Surface((configs.screen.SCREEN_WIDTH, configs.screen.SCREEN_HEIGHT))
         fade.fill((0, 0, 0))
@@ -51,7 +60,8 @@ class State():
             self.game.screen.blit(fade, (0, 0))
             pygame.display.update(fade.get_rect())
             pygame.time.delay(3)
-            
+    
+    @abstractmethod 
     def fadeout(self):
         fade = pygame.Surface((configs.screen.SCREEN_WIDTH, configs.screen.SCREEN_HEIGHT))
         fade.fill((0, 0, 0))

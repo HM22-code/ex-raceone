@@ -1,6 +1,6 @@
 import pygame
 import utils.assets
-from classes.state import State
+from interfaces.state import State
 from objects.background import Background
 
 
@@ -36,3 +36,18 @@ class Ending(State):
     
     def exit_state(self):
         self.music.stop()
+        
+    def process_input(self):
+        super().process_input()
+    
+    def render(self):
+        super().render()
+    
+    def update(self):
+        super().update()
+    
+    def fadein(self):
+        super().fadein()
+    
+    def fadeout(self):
+        super().fadeout()

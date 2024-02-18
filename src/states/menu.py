@@ -1,7 +1,7 @@
 import pygame
 import configs.button
 import configs.screen
-from classes.state import State
+from interfaces.state import State
 from objects.background import Background
 from objects.button import Button
 from objects.title import Title
@@ -78,6 +78,27 @@ class Menu(State):
                     button.action()
             else: 
                 button.active = False
+         
+    def enter_state(self):
+        super().enter_state()
+    
+    def exit_state(self):
+        super().exit_state()       
+
+    def process_input(self):
+        super().process_input()
+    
+    def render(self):
+        super().render()
+    
+    def update(self):
+        super().update()
+    
+    def fadein(self):
+        super().fadein()
+    
+    def fadeout(self):
+        super().fadeout()
             
         
     
