@@ -14,7 +14,7 @@ class Game:
         # Initialize Pygame
         pygame.init()
         # Create the screen
-        self.screen = pygame.display.set_mode((configs.screen.SCREEN_WIDTH, configs.screen.SCREEN_HEIGHT))
+        self.screen = pygame.display.set_mode((configs.screen.SCREEN_WIDTH, configs.screen.SCREEN_HEIGHT), pygame.FULLSCREEN|pygame.SCALED)
         # Loading assets
         utils.assets.load_sprites()
         utils.assets.load_audios()
@@ -87,7 +87,7 @@ class Game:
             self.update()
             self.render()
             # Limits FPS to 60
-            self.delta = self.clock.tick(configs.screen.FPS)
+            self.delta = self.clock.tick(configs.screen.FPS)/1000
             
     def quit(self):
         """ Quit game program
