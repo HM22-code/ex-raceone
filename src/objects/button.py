@@ -21,8 +21,8 @@ class Button(pygame.sprite.Sprite):
         
     def update_hover(self):
         if self.active:
-            self.image.fill((50, 50, 255))
+            self.image.fill(pygame.color.Color("darkorchid1"))
         else:
-            self.image.fill((0, 0, 255))
+            self.image.fill(pygame.color.Color("darkorchid2"))
         self.image.blit(self.text_object.image, self.text_object.image.get_rect(center = self.image.get_rect().center))           
 
