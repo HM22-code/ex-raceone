@@ -1,5 +1,5 @@
 import pygame
-import assets
+import utils.assets
 import configs.button
 import configs.screen
 from objects.button import Button
@@ -28,7 +28,7 @@ class Start(State):
         self.buttons = []
         self.create_buttons()
         # Background music
-        self.music = assets.get_audio("menu")
+        self.music = utils.assets.get_audio("menu")
         self.music.set_volume(0.3)
         
     def start(self):

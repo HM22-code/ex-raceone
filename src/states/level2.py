@@ -1,5 +1,5 @@
 import pygame
-import assets
+import utils.assets
 from objects.player import Player
 from objects.background import Background
 from classes.state import State
@@ -19,7 +19,7 @@ class Level2(State):
         Background(self.sprites)
         Player(self.sprites)
         # Background music
-        self.music = assets.get_audio("level2")
+        self.music = utils.assets.get_audio("level2")
         self.music.set_volume(0.3)
     
     def run(self):

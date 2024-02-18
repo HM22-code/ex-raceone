@@ -1,5 +1,5 @@
 import pygame.sprite
-import assets
+import utils.assets
 from enums.layers import Layers
 
 class Background(pygame.sprite.Sprite):
@@ -12,5 +12,5 @@ class Background(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
         self._layer = Layers.BACKGROUND
-        self.image = assets.get_sprite("background")
+        self.image = utils.assets.get_sprite("background")
         self.rect = self.image.get_rect(topleft=(0, 0))

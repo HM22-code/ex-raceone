@@ -1,6 +1,6 @@
 import pygame
 import configs.screen
-import assets
+import utils.assets
 import sys
 from states.start import Start
 
@@ -16,10 +16,10 @@ class Game:
         # Create the screen
         self.screen = pygame.display.set_mode((configs.screen.SCREEN_WIDTH, configs.screen.SCREEN_HEIGHT))
         # Loading assets
-        assets.load_sprites()
-        assets.load_audios()
+        utils.assets.load_sprites()
+        utils.assets.load_audios()
         # Screen options
-        pygame.display.set_icon(assets.get_sprite("icon"))
+        pygame.display.set_icon(utils.assets.get_sprite("icon"))
         pygame.display.set_caption(configs.screen.TITLE)
         # Clock to control FPS
         self.clock = pygame.time.Clock()

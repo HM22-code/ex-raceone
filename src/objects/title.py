@@ -1,5 +1,5 @@
 import pygame.sprite
-import assets
+import utils.assets
 import configs.screen
 from enums.layers import Layers
 
@@ -15,6 +15,6 @@ class Title(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
         self._layer = Layers.UI
-        self.image = assets.get_sprite("title")
+        self.image = utils.assets.get_sprite("title")
         self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * self.SCALE), int(self.image.get_height() * self.SCALE)))
         self.rect = self.image.get_rect(center=(configs.screen.SCREEN_WIDTH / 2, configs.screen.SCREEN_HEIGHT / 6))

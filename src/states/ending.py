@@ -1,5 +1,5 @@
 import pygame
-import assets
+import utils.assets
 from classes.state import State
 from objects.background import Background
 
@@ -18,7 +18,7 @@ class Ending(State):
         # Create Game objects
         Background(self.sprites)
         # Background music
-        self.music = assets.get_audio("ending")
+        self.music = utils.assets.get_audio("ending")
         self.music.set_volume(0.3)
         
     def run(self):

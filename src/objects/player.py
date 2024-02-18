@@ -1,5 +1,5 @@
 import pygame.sprite
-import assets
+import utils.assets
 import configs.screen
 from enums.layers import Layers
 
@@ -15,7 +15,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
         self._layer = Layers.PLAYER
-        self.image = assets.get_sprite("player")
+        self.image = utils.assets.get_sprite("player")
         self.rect = self.image.get_rect(bottomleft=(50, configs.screen.SCREEN_HEIGHT-20))
         
     def update(self):
