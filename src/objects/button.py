@@ -22,7 +22,7 @@ class Button(pygame.sprite.Sprite):
         
     def update_hover(self):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
-            pygame.event.post(pygame.event.Event(Events.MOUSEHOVER))
+            pygame.event.post(pygame.event.Event(int(Events.MOUSEHOVER)))
             self.image.fill(pygame.color.Color("darkorchid1"))
         else:
             self.image.fill(pygame.color.Color("darkorchid2"))
