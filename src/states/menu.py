@@ -68,16 +68,10 @@ class Menu(State):
         self.sprites.update()
     
     def handle_event(self, event):
-        mx, my = pygame.mouse.get_pos()
         for button in self.buttons:
-            # Check if hover
-            if button.rect.collidepoint((mx, my)):
-                button.active = True
-                # Check if click
+            if button.rect.collidepoint(pygame.mouse.get_pos()):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     button.action()
-            else: 
-                button.active = False
          
     def enter_state(self):
         super().enter_state()
