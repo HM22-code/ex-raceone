@@ -74,18 +74,13 @@ class Game:
         """
         self.get_current_state().run()
     
-    def render(self):
-        """ Update the full display Surface to the screen
-        """
-        pygame.display.flip()
-    
     def run(self):
         """ Game loop
         """
         while self.running:
             self.process_input()
             self.update()
-            self.render()
+            pygame.display.flip()
             # Limits FPS to 60
             self.delta = self.clock.tick(configs.screen.FPS)/1000
             
