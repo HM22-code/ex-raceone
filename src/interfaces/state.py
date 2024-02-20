@@ -1,5 +1,5 @@
 import pygame
-import configs.screen
+import configs
 from abc import ABC, abstractmethod
 
 class State(ABC):
@@ -53,7 +53,7 @@ class State(ABC):
     
     @abstractmethod 
     def fadein(self):
-        fade = pygame.Surface((configs.screen.SCREEN_WIDTH, configs.screen.SCREEN_HEIGHT))
+        fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
         fade.fill((0, 0, 0))
         for alpha in range(0, 256, 1):
             fade.set_alpha(alpha)
@@ -63,7 +63,7 @@ class State(ABC):
     
     @abstractmethod 
     def fadeout(self):
-        fade = pygame.Surface((configs.screen.SCREEN_WIDTH, configs.screen.SCREEN_HEIGHT))
+        fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
         fade.fill((0, 0, 0))
         for alpha in range(255, -1, -1):
             fade.set_alpha(alpha)

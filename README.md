@@ -66,7 +66,7 @@ The entitity can commands to this state group, and the state group will take car
    - Jeux style du dinosaure en ligne
    - style scrolling permanent
    - style retro arcade 8-bit 16-bit
-   - style alto adventure
+   - style jetpack joyride
 
  - 2 routes parallèles pour esquiver des obstacles en changeant de route
 

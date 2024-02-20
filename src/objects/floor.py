@@ -1,6 +1,6 @@
 import pygame.sprite
 import utils.assets
-import configs.screen
+import configs
 from enums.layers import Layers
 
 class Floor(pygame.sprite.Sprite):
@@ -19,4 +19,4 @@ class Floor(pygame.sprite.Sprite):
     def update(self):
         self.rect.x -= 2
         if self.rect.right <= 0:
-            self.rect.x = configs.screen.SCREEN_WIDTH
+            self.rect.x = configs.SCREEN_WIDTH
