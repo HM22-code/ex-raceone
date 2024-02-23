@@ -20,8 +20,8 @@ class Menu(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        Background(self.sprites)
-        Title(self.sprites)
+        self.sprites.add(Background())
+        self.sprites.add(Title())
         # Adding buttons
         self.buttons = []
         self.create_buttons()
@@ -56,8 +56,9 @@ class Menu(State):
         starting_x = (configs.SCREEN_WIDTH - configs.BUTTON_WIDTH) // 2
         starting_y = (configs.SCREEN_HEIGHT - button_total_height) // 2
         for item in menu_items:
-            button = Button(starting_x, starting_y, configs.BUTTON_WIDTH, configs.BUTTON_HEIGHT, item["title"], item["action"], self.sprites)
+            button = Button(starting_x, starting_y, configs.BUTTON_WIDTH, configs.BUTTON_HEIGHT, item["title"], item["action"])
             starting_y += configs.BUTTON_HEIGHT + configs.BUTTON_SPACING
+            self.sprites.add(button)
             self.buttons.append(button)
             
     def run(self):

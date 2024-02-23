@@ -19,7 +19,7 @@ class Option(State):
         self.sliders = []
         self.create_sliders()
         # Create Game objects
-        Background(self.sprites)
+        self.sprites.add(Background())
         
     def create_sliders(self):
         slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (300, 40), 0.5, 0, 100)

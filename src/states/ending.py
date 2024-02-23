@@ -16,7 +16,7 @@ class Ending(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        Background(self.sprites)
+        self.sprites.add(Background())
         # Background music
         self.music = utils.assets.get_audio("ending")
         self.music.set_volume(0.3)

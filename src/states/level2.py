@@ -16,8 +16,8 @@ class Level2(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        Background(self.sprites)
-        Player(self.sprites)
+        self.sprites.add(Background())
+        self.sprites.add(Player())
         # Background music
         self.music = utils.assets.get_audio("level2")
         self.music.set_volume(0.3)
