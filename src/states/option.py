@@ -1,6 +1,8 @@
 import pygame
+import configs
 from interfaces.state import State
 from objects.background import Background
+from objects.slider import Slider
 
 
 class Option(State):
@@ -14,8 +16,15 @@ class Option(State):
         super().__init__(game)
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
+        self.sliders = []
+        self.create_sliders()
         # Create Game objects
         Background(self.sprites)
+        
+    def create_sliders(self):
+        slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (300, 40), 0.5, 0, 100)
+        self.sprites.add(slider)
+        self.sliders.append(slider)
         
     def run(self):
         # Draw
@@ -24,8 +33,14 @@ class Option(State):
         self.sprites.update()
         
     def handle_event(self, event):
+        mx, my = pygame.mouse.get_pos()
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             self.game.set_state(self.game.get_previous_state())
+        for slider in self.sliders:
+            if slider.rect.collidepoint((mx, my)):
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    slider.move_slider((mx, my))
+                    print(slider.get_value())
             
     def enter_state(self):
         self.fadeout()
