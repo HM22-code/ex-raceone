@@ -40,10 +40,9 @@ class Option(State):
             if slider.rect.collidepoint((mx, my)):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     slider.move_slider((mx, my))
-                    print(slider.get_value())
             
     def enter_state(self):
-        self.fadeout()
+        super().enter_state()
     
     def exit_state(self):
         super().exit_state()    
@@ -56,9 +55,3 @@ class Option(State):
     
     def update(self):
         super().update()
-    
-    def fadein(self):
-        super().fadein()
-    
-    def fadeout(self):
-        super().fadeout()

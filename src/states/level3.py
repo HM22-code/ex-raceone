@@ -46,9 +46,3 @@ class Level3(State):
     
     def update(self):
         super().update()
-    
-    def fadein(self):
-        super().fadein()
-    
-    def fadeout(self):
-        super().fadeout()

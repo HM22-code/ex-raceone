@@ -50,25 +50,5 @@ class State(ABC):
         """ Handle event for the current state
         """
         pass
-    
-    @abstractmethod 
-    def fadein(self):
-        fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
-        fade.fill((0, 0, 0))
-        for alpha in range(0, 256, 1):
-            fade.set_alpha(alpha)
-            self.game.screen.blit(fade, (0, 0))
-            pygame.display.update(fade.get_rect())
-            pygame.time.delay(3)
-    
-    @abstractmethod 
-    def fadeout(self):
-        fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
-        fade.fill((0, 0, 0))
-        for alpha in range(255, -1, -1):
-            fade.set_alpha(alpha)
-            self.game.screen.blit(fade, (0, 0))
-            pygame.display.update(fade.get_rect())
-            pygame.time.delay(3)
             
             

@@ -88,7 +88,7 @@ class Start(State):
     
     def exit_state(self):
         self.music.fadeout(1000)
-        self.fadein()
+        self.game.fadein()
         
     def process_input(self):
         super().process_input()
@@ -98,9 +98,3 @@ class Start(State):
     
     def update(self):
         super().update()
-    
-    def fadein(self):
-        super().fadein()
-    
-    def fadeout(self):
-        super().fadeout()

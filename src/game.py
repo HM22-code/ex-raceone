@@ -59,6 +59,15 @@ class Game:
         self.previous_state.exit_state()
         self.current_state = state
         self.current_state.enter_state()
+        
+    def fadein(self):
+        fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
+        fade.fill((0, 0, 0))
+        for alpha in range(0, 256, 1):
+            fade.set_alpha(alpha)
+            self.screen.blit(fade, (0, 0))
+            pygame.display.update(fade.get_rect())
+            pygame.time.delay(3)
     
     def process_input(self):
         """ Process input event
