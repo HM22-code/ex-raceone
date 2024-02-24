@@ -27,8 +27,7 @@ class Start(State):
         self.buttons = []
         self.create_buttons()
         # Background music
-        self.music = utils.assets.get_audio("menu")
-        self.music.set_volume(0.3)
+        self.game.music = utils.assets.get_audio("menu")
         
     def start(self):
         self.game.set_state(Menu(self.game))
@@ -85,10 +84,11 @@ class Start(State):
                     button.action()
         
     def enter_state(self):
-        self.music.play(loops = -1)
+        self.game.music.set_volume(self.game.music_volume)
+        self.game.music.play(loops = -1)
     
     def exit_state(self):
-        self.music.fadeout(1000)
+        self.game.music.fadeout(1000)
         self.game.fadein()
         
     def process_input(self):

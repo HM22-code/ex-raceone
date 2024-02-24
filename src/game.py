@@ -23,6 +23,8 @@ class Game:
         pygame.display.set_caption(configs.TITLE)
         # Clock to control FPS
         self.clock = pygame.time.Clock()
+        self.music = None
+        self.music_volume = configs.MUSIC_VOLUME
         # Init Game state manager
         self.init_state()
         

@@ -22,7 +22,7 @@ class Option(State):
         self.sprites.add(Background())
         
     def create_sliders(self):
-        slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (300, 40), 0.5, 0, 100)
+        slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (300, 40), self.game.music_volume, 0, 1)
         self.sprites.add(slider)
         self.sliders.append(slider)
         
@@ -40,6 +40,7 @@ class Option(State):
             if slider.rect.collidepoint((mx, my)):
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     slider.move_slider((mx, my))
+                    self.game.music_volume = slider.get_value()
             
     def enter_state(self):
         super().enter_state()

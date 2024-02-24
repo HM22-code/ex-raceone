@@ -19,8 +19,7 @@ class Level2(State):
         self.sprites.add(Background())
         self.sprites.add(Player())
         # Background music
-        self.music = utils.assets.get_audio("level2")
-        self.music.set_volume(0.3)
+        self.game.music = utils.assets.get_audio("level2")
     
     def run(self):
         # Draw
@@ -33,10 +32,11 @@ class Level2(State):
             self.game.set_state(self.game.get_previous_state())
         
     def enter_state(self):
-        self.music.play(loops = -1)
+        self.game.music.set_volume(self.game.music_volume)
+        self.game.music.play(loops = -1)
     
     def exit_state(self):
-        self.music.stop()
+        self.game.music.stop()
         
     def process_input(self):
         super().process_input()
