@@ -18,7 +18,7 @@ class Ending(State):
         # Create Game objects
         self.sprites.add(Background())
         # Background music
-        self.game.music = utils.assets.get_audio("ending")
+        self.music = utils.assets.get_audio("ending")
         
     def run(self):
         # Draw
@@ -31,11 +31,11 @@ class Ending(State):
             self.game.set_state(self.game.get_previous_state())
         
     def enter_state(self):
-        self.game.music.set_volume(self.game.music_volume)
-        self.game.music.play(loops = -1)
+        self.music.set_volume(self.game.music_volume)
+        self.music.play(loops = -1)
     
     def exit_state(self):
-        self.game.music.stop()
+        self.music.stop()
         
     def process_input(self):
         super().process_input()

@@ -12,7 +12,6 @@ class Game:
         # Init game running
         self.running = True
         # Initialize Pygame
-        pygame.mixer.pre_init(44100, 16, 2, 4096)
         pygame.init()
         # Create the screen
         self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT), pygame.FULLSCREEN|pygame.SCALED)
@@ -21,7 +20,6 @@ class Game:
         pygame.display.set_caption(configs.TITLE)
         # Clock to control FPS
         self.clock = pygame.time.Clock()
-        self.music = None
         self.music_volume = configs.MUSIC_VOLUME
         # Init Game state manager
         self.init_state()
