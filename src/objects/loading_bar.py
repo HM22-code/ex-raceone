@@ -1,6 +1,7 @@
 import pygame
 
 class LoadingBar(pygame.sprite.Sprite):
+    
     def __init__(self, x, y, width, height, max_value):
         super().__init__()
         self.image = pygame.Surface((width, height))
