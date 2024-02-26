@@ -64,7 +64,7 @@ class Start(State):
         ]
         button_total_height = len(menu_items) * (configs.BUTTON_HEIGHT + configs.BUTTON_SPACING)
         starting_x = (configs.SCREEN_WIDTH - configs.BUTTON_WIDTH) // 2
-        starting_y = (configs.SCREEN_HEIGHT - button_total_height) // 2
+        starting_y = (configs.SCREEN_HEIGHT - button_total_height) // 1.7
         for item in menu_items:
             button = Button(starting_x, starting_y, configs.BUTTON_WIDTH, configs.BUTTON_HEIGHT, item["title"], item["action"])
             starting_y += configs.BUTTON_HEIGHT + configs.BUTTON_SPACING
