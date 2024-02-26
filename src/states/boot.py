@@ -15,7 +15,7 @@ class Boot(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        self.loading_bar = LoadingBar(configs.SCREEN_WIDTH // 2.9, configs.SCREEN_HEIGHT // 4, 400, 20, 100)
+        self.loading_bar = LoadingBar((configs.SCREEN_WIDTH - configs.LOADING_BAR_WIDTH) // 2, (configs.SCREEN_HEIGHT - configs.LOADING_BAR_HEIGHT)// 4, configs.LOADING_BAR_WIDTH, configs.LOADING_BAR_HEIGHT, 100)
         self.sprites.add(self.loading_bar)
         self.sprites.add(Text(configs.SCREEN_WIDTH // 2.5, configs.SCREEN_HEIGHT // 2.5, "made with", "retro-tech-font.ttf", 50, pygame.color.Color("black")))
         self.sprites.add(Logo())
