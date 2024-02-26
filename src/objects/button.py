@@ -12,8 +12,7 @@ class Button(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.text = text
-        self.text_object = Text(self.text)
+        self.text_object = Text(self.rect.right // 2, self.rect.bottom // 2, text, "16-bit-font.ttf", 36, pygame.color.Color("white"))
         self.action = action
         self.active = True
         

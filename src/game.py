@@ -2,7 +2,7 @@ import pygame
 import configs
 import utils.assets
 import sys
-from states.start import Start
+from states.boot import Boot
 
 class Game:
     """ Game class
@@ -12,14 +12,12 @@ class Game:
         # Init game running
         self.running = True
         # Initialize Pygame
+        pygame.mixer.pre_init(44100, 16, 2, 4096)
         pygame.init()
         # Create the screen
         self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT), pygame.FULLSCREEN|pygame.SCALED)
-        # Loading assets
-        utils.assets.load_sprites()
-        utils.assets.load_audios()
         # Screen options
-        pygame.display.set_icon(utils.assets.get_sprite("icon"))
+        pygame.display.set_icon(utils.assets.load_sprite("icon.png"))
         pygame.display.set_caption(configs.TITLE)
         # Clock to control FPS
         self.clock = pygame.time.Clock()
@@ -31,7 +29,7 @@ class Game:
     def init_state(self):
         """ Init state
         """
-        self.current_state = Start(self)
+        self.current_state = Boot(self)
         self.current_state.enter_state()
         self.previous_state = None
         
