@@ -2,18 +2,12 @@
 
 A retro side scroller game made with pygame
 
-## TODO
-
-- [ ] Use base engine to make a template
-- [ ] Create a functional prototype
-- [X] Plan game architecture and concepts
-
 ## Look and feel
 
 - SNES style graphics 16 bit
 - 16*9 for widescreen diplays
 - HD resolutions must be divisible by the games resolution so scaling works
-- Native resolution is 480*270 (this is 1/4 of 1920*1080)
+- Native resolution is (1280*720) (480*270) (this is 3/4 1/4 of 1920*1080)
 
 ## Guides & Advises
 
@@ -27,8 +21,8 @@ Sprite > Static Entity > Dynamic Entity > Player
 
 ### Resolution
 
-We will implement a system where scaling the game is very efficient and doesn't actually increase the native resolution of the game itself, only the display.
-We will also go over how to turn on hardware acceleration for if the user chooses to turn fullscreen mode on.
+We will implement a system to scale the game and increase the native resolution of the game itself on the display.
+We will also go over if the user chooses to turn fullscreen mode on.
 
 ### Layers
 
@@ -75,18 +69,14 @@ The entitity can commands to this state group, and the state group will take car
 ## Brainstorming
 
 - Side scroller game
-  - Jeux style du dinosaure en ligne
   - style scrolling permanent
   - style retro arcade 8-bit 16-bit
   - style jetpack joyride
 
-- 2 routes parallèles pour esquiver des obstacles en changeant de route
-
 - Objectifs aller le plus loin possible
-  - ou terminer le niveau
-  - niveaux prédéfinis/ construit  avec tiles ?
+  - niveaux prédéfinis / construit  avec tiles ?
   - éviter les obstacles
-  - side scrolling race game
+  - side scrolling parallax
 
 - Environnement et ressources:
   - futuriste,
@@ -122,15 +112,9 @@ The entitity can commands to this state group, and the state group will take car
 
 - Esquiver des obstacles
 
-- Tirer des lasers
-
-- Ennemis:
-  - police
-  - Boss
-
 - Système de vie:
   - Barre de vie
-  - Prendre le moins de dégats possible
+  - Véhicule
 
 - Avant de commencer un niveau Sprites:
   - READY
@@ -138,11 +122,9 @@ The entitity can commands to this state group, and the state group will take car
 
 - Vaisseau Terrestre
 
-- Possibilité de saut en cloche
+- Possibilité de saut en cloche/vague
 
 - Fin sur credit
   - fond panorama sur les wastelands
   - scrolling vers le ciel
-  - etiles fillantes vaisseaux
-  - espace nouvelle espoir vers l'infini
   - fin
