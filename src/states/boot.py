@@ -31,32 +31,22 @@ class Boot(State):
         utils.assets.load_fonts()
         self.loading_bar.set_value(self.loading_bar.value + configs.LOADING_BAR_STEP)
         self.ready = True
-        
-    def run(self):
-        # Draw
+
+    def render(self):
         self.game.screen.fill(pygame.color.Color("white"))
         self.sprites.draw(self.game.screen)
-        # Update
+    
+    def update(self):
         self.sprites.update()
         
     def handle_event(self, event):
         if self.ready:
             self.thread.join()
             self.game.set_state(Start(self.game))
-            
-        
+    
     def enter_state(self):
         self.thread = threading.Thread(target=self.load_assets)
         self.thread.start()
     
     def exit_state(self):
         self.game.fadein()
-        
-    def process_input(self):
-        super().process_input()
-    
-    def render(self):
-        super().render()
-    
-    def update(self):
-        super().update()

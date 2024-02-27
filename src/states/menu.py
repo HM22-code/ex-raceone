@@ -60,11 +60,11 @@ class Menu(State):
             starting_y += configs.BUTTON_HEIGHT + configs.BUTTON_SPACING
             self.sprites.add(button)
             self.buttons.append(button)
-            
-    def run(self):
-        # Draw
+    
+    def render(self):
         self.sprites.draw(self.game.screen)
-        # Update
+    
+    def update(self):
         self.sprites.update()
     
     def handle_event(self, event):
@@ -74,19 +74,7 @@ class Menu(State):
                     button.action()
          
     def enter_state(self):
-        super().enter_state()
+        return super().enter_state()
     
     def exit_state(self):
-        super().exit_state()       
-
-    def process_input(self):
-        super().process_input()
-    
-    def render(self):
-        super().render()
-    
-    def update(self):
-        super().update()
-            
-        
-    
+        return super().exit_state()  

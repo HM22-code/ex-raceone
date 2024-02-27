@@ -20,11 +20,11 @@ class Level2(State):
         self.sprites.add(Player())
         # Background music
         self.music = utils.assets.get_audio("level2.wav")
-    
-    def run(self):
-        # Draw
+        
+    def render(self):
         self.sprites.draw(self.game.screen)
-        # Update
+    
+    def update(self):
         self.sprites.update()
         
     def handle_event(self, event):
@@ -37,12 +37,3 @@ class Level2(State):
     
     def exit_state(self):
         self.music.stop()
-        
-    def process_input(self):
-        super().process_input()
-    
-    def render(self):
-        super().render()
-    
-    def update(self):
-        super().update()

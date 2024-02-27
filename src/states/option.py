@@ -4,7 +4,6 @@ from interfaces.state import State
 from objects.background import Background
 from objects.slider import Slider
 
-
 class Option(State):
     """ Option state class
 
@@ -16,43 +15,37 @@ class Option(State):
         super().__init__(game)
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
-        self.sliders = []
         self.create_sliders()
         # Create Game objects
         self.sprites.add(Background())
         
     def create_sliders(self):
-        slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (configs.SLIDER_WIDTH, configs.SLIDER_HEIGHT), self.game.music_volume, configs.SLIDER_MIN, configs.SLIDER_MAX)
-        self.sprites.add(slider)
-        self.sliders.append(slider)
+        self.music_slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 4), (configs.SLIDER_WIDTH, configs.SLIDER_HEIGHT), self.game.music_volume, configs.SLIDER_MIN, configs.SLIDER_MAX)
+        self.sound_slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (configs.SLIDER_WIDTH, configs.SLIDER_HEIGHT), self.game.sound_volume, configs.SLIDER_MIN, configs.SLIDER_MAX)
+        self.sprites.add(self.music_slider)
+        self.sprites.add(self.sound_slider)
         
-    def run(self):
-        # Draw
+    def render(self):
         self.sprites.draw(self.game.screen)
-        # Update
+    
+    def update(self):
         self.sprites.update()
         
     def handle_event(self, event):
         mx, my = pygame.mouse.get_pos()
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             self.game.set_state(self.game.get_previous_state())
-        for slider in self.sliders:
-            if slider.rect.collidepoint((mx, my)):
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    slider.move_slider((mx, my))
-                    self.game.music_volume = slider.get_value()
+        if self.music_slider.rect.collidepoint((mx, my)):
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                self.music_slider.move_slider((mx, my))
+                self.game.music_volume = self.music_slider.get_value()
+        if self.sound_slider.rect.collidepoint((mx, my)):
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                self.sound_slider.move_slider((mx, my))
+                self.game.music_volume = self.sound_slider.get_value()
             
     def enter_state(self):
-        super().enter_state()
+        return super().enter_state()
     
     def exit_state(self):
-        super().exit_state()    
-        
-    def process_input(self):
-        super().process_input()
-    
-    def render(self):
-        super().render()
-    
-    def update(self):
-        super().update()
+        return super().exit_state()

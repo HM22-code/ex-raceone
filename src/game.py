@@ -1,5 +1,6 @@
 import pygame
 import configs
+from interfaces.state import State
 import utils.assets
 import sys
 from states.boot import Boot
@@ -21,6 +22,7 @@ class Game:
         # Clock to control FPS
         self.clock = pygame.time.Clock()
         self.music_volume = configs.MUSIC_VOLUME
+        self.sound_volume = configs.SOUND_VOLUME
         # Init Game state manager
         self.init_state()
         
@@ -47,7 +49,7 @@ class Game:
         """
         return self.previous_state
     
-    def set_state(self, state):
+    def set_state(self, state: State):
         """ Change the current state
 
         Args:
@@ -60,35 +62,24 @@ class Game:
         
     def fadein(self):
         fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
-        fade.fill((0, 0, 0))
+        fade.fill(pygame.color.Color("black"))
         for alpha in range(0, 256, 1):
             fade.set_alpha(alpha)
             self.screen.blit(fade, (0, 0))
             pygame.display.update(fade.get_rect())
             pygame.time.delay(3)
     
-    def process_input(self):
-        """ Process input event
-        """
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.quit()
-            # Current state event handling
-            self.get_current_state().handle_event(event)
-    
-    def update(self):
-        """ Current state update
-        """
-        self.get_current_state().run()
-    
     def run(self):
         """ Game loop
         """
         while self.running:
-            self.process_input()
-            self.update()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.quit()
+                self.get_current_state().handle_event(event)
+            self.get_current_state().render()
+            self.get_current_state().update()
             pygame.display.flip()
-            # Limits FPS to 60
             self.delta = self.clock.tick(configs.FPS)/1000
             
     def quit(self):

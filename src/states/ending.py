@@ -19,11 +19,11 @@ class Ending(State):
         self.sprites.add(Background())
         # Background music
         self.music = utils.assets.get_audio("ending.wav")
-        
-    def run(self):
-        # Draw
+    
+    def render(self):
         self.sprites.draw(self.game.screen)
-        # Update
+    
+    def update(self):
         self.sprites.update()
         
     def handle_event(self, event):
@@ -36,12 +36,3 @@ class Ending(State):
     
     def exit_state(self):
         self.music.stop()
-        
-    def process_input(self):
-        super().process_input()
-    
-    def render(self):
-        super().render()
-    
-    def update(self):
-        super().update()

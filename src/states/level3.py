@@ -20,13 +20,13 @@ class Level3(State):
         self.sprites.add(Player())
         # Background music
         self.music = utils.assets.get_audio("level3.wav")
-    
-    def run(self):
-        # Draw
+     
+    def render(self):
         self.sprites.draw(self.game.screen)
-        # Update
+    
+    def update(self):
         self.sprites.update()
-        
+    
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             self.game.set_state(self.game.get_previous_state())
@@ -37,12 +37,3 @@ class Level3(State):
     
     def exit_state(self):
         self.music.stop()
-        
-    def process_input(self):
-        super().process_input()
-    
-    def render(self):
-        super().render()
-    
-    def update(self):
-        super().update()

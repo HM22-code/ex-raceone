@@ -70,11 +70,11 @@ class Start(State):
             starting_y += configs.BUTTON_HEIGHT + configs.BUTTON_SPACING
             self.sprites.add(button)
             self.buttons.append(button)
-    
-    def run(self):
-        # Draw
+        
+    def render(self):
         self.sprites.draw(self.game.screen)
-        # Update
+    
+    def update(self):
         self.sprites.update()
         
     def handle_event(self, event):
@@ -87,16 +87,6 @@ class Start(State):
         self.music.set_volume(self.game.music_volume)
         self.music.play(loops = -1)
         
-    
     def exit_state(self):
         self.music.fadeout(1000)
         self.game.fadein()
-        
-    def process_input(self):
-        super().process_input()
-    
-    def render(self):
-        super().render()
-    
-    def update(self):
-        super().update()
