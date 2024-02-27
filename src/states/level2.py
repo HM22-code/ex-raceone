@@ -19,7 +19,7 @@ class Level2(State):
         self.sprites.add(Background())
         self.sprites.add(Player())
         # Background music
-        self.music = utils.assets.get_audio("level2")
+        self.music = utils.assets.get_audio("level2.wav")
     
     def run(self):
         # Draw

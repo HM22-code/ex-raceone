@@ -15,7 +15,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
         self._layer = Layers.PLAYER
-        self.image = utils.assets.get_sprite("player")
+        self.image = utils.assets.get_sprite("player.png")
         self.rect = self.image.get_rect(bottomleft=(50, configs.SCREEN_HEIGHT-20))
         
     def update(self):

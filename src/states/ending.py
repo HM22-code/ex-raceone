@@ -18,7 +18,7 @@ class Ending(State):
         # Create Game objects
         self.sprites.add(Background())
         # Background music
-        self.music = utils.assets.get_audio("ending")
+        self.music = utils.assets.get_audio("ending.wav")
         
     def run(self):
         # Draw

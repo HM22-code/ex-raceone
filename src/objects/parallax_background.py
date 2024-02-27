@@ -15,7 +15,7 @@ class ParallaxBackground(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
         self._layer = Layers.BACKGROUND
-        self.image = utils.assets.get_sprite("background")
+        self.image = utils.assets.get_sprite("background.png")
         self.rect = self.image.get_rect(topleft=(0, 0))
     
     def update(self):

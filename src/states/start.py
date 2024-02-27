@@ -27,7 +27,7 @@ class Start(State):
         self.buttons = []
         self.create_buttons()
         # Background music
-        self.music = utils.assets.get_audio("menu")
+        self.music = utils.assets.get_audio("menu.wav")
         
     def start(self):
         self.game.set_state(Menu(self.game))

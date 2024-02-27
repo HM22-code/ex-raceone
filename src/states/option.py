@@ -22,7 +22,7 @@ class Option(State):
         self.sprites.add(Background())
         
     def create_sliders(self):
-        slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (300, 40), self.game.music_volume, 0, 1)
+        slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (configs.SLIDER_WIDTH, configs.SLIDER_HEIGHT), self.game.music_volume, configs.SLIDER_MIN, configs.SLIDER_MAX)
         self.sprites.add(slider)
         self.sliders.append(slider)
         

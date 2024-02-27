@@ -10,7 +10,7 @@ def load_sprites():
     """
     path = os.path.join(os.path.abspath(os.curdir), "assets", "images")
     for file in os.listdir(path):
-        sprites[file.split('.')[0]] = pygame.image.load(os.path.join(path, file)).convert_alpha()
+        sprites[file] = pygame.image.load(os.path.join(path, file)).convert_alpha()
 
 def load_sprite(file):
     """ Load a sprite from assets/images/ from file
@@ -40,7 +40,7 @@ def load_audios():
     """
     path = os.path.join(os.path.abspath(os.curdir), "assets", "audios")
     for file in os.listdir(path):
-        audios[file.split('.')[0]] = pygame.mixer.Sound(os.path.join(path, file))
+        audios[file] = pygame.mixer.Sound(os.path.join(path, file))
         
 def load_audio(file):
     """ Load an audio from assets/audios/ from file
@@ -70,7 +70,7 @@ def load_fonts():
     """
     path = os.path.join(os.path.abspath(os.curdir), "assets", "fonts")
     for file in os.listdir(path):
-        fonts[file.split('.')[0]] = pygame.font.Font(os.path.join(path, file), 36)
+        fonts[file] = pygame.font.Font(os.path.join(path, file), 36)
         
 def load_font(file, size):
     """ Load a font from assets/fonts/ from file
