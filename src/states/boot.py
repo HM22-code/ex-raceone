@@ -36,8 +36,8 @@ class Boot(State):
         self.game.screen.fill(pygame.color.Color("white"))
         self.sprites.draw(self.game.screen)
     
-    def update(self):
-        self.sprites.update()
+    def update(self, dt):
+        self.sprites.update(dt)
         
     def handle_event(self, event):
         if self.ready:

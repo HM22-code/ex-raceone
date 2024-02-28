@@ -21,7 +21,7 @@ class Slider(pygame.sprite.Sprite):
         self.container_rect = pygame.Rect(0, 0, size[0], size[1])
         self.handle_rect = pygame.Rect(self.initial_val, 0, self.HANDLE_WIDTH, size[1])
         
-    def update(self):
+    def update(self, dt):
         pygame.draw.rect(self.image, "darkgray", self.container_rect)
         pygame.draw.rect(self.image, "black", self.handle_rect)
         

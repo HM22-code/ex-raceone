@@ -17,7 +17,7 @@ class Button(pygame.sprite.Sprite):
         self.action = action
         self.active = True
         
-    def update(self):
+    def update(self, dt):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
             pygame.event.post(pygame.event.Event(self.MOUSEHOVER))
             self.image.fill(pygame.color.Color("darkorchid1"))

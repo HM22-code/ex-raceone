@@ -18,7 +18,7 @@ class Player(pygame.sprite.Sprite):
         self.image = utils.assets.get_sprite("player.png")
         self.rect = self.image.get_rect(bottomleft=(50, configs.SCREEN_HEIGHT-20))
         
-    def update(self):
+    def update(self, dt):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and self.rect.x > 0:
             self.rect.x -= self.velocity

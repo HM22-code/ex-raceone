@@ -20,7 +20,7 @@ class State(ABC):
         pass
     
     @abstractmethod 
-    def update(self):
+    def update(self, dt):
         """ Called on every frames to update the current state screen
         """
         pass

@@ -16,7 +16,7 @@ class Floor(pygame.sprite.Sprite):
         self.image = utils.assets.get_sprite("floor.png")
         self.rect = self.image.get_rect(bottomleft=(configs.screen.SCREEN_WIDTH * index, configs.screen.SCREEN_HEIGHT))
         
-    def update(self):
+    def update(self, dt):
         self.rect.x -= 2
         if self.rect.right <= 0:
             self.rect.x = configs.SCREEN_WIDTH

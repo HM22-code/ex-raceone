@@ -28,8 +28,8 @@ class Option(State):
     def render(self):
         self.sprites.draw(self.game.screen)
     
-    def update(self):
-        self.sprites.update()
+    def update(self, dt):
+        self.sprites.update(dt)
         
     def handle_event(self, event):
         mx, my = pygame.mouse.get_pos()

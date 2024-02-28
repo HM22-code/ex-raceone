@@ -11,7 +11,7 @@ class LoadingBar(pygame.sprite.Sprite):
         self.value = 0
         self.max_value = max_value
 
-    def update(self):
+    def update(self, dt):
         # Calculate width of the bar based on the current value and max value
         bar_width = int(self.rect.width * (self.value / self.max_value))
         # Draw the background of the loading bar

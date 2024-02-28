@@ -20,7 +20,7 @@ class Particle(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         
-    def update(self):
+    def update(self, dt):
         self.particles.append([[self.rect.x, self.rect.y], [random.randint(0,20) / 10 - 1, -2], random.randint(4,6)])
         for particle in self.particles:
             particle[0][0] += particle[1][0]

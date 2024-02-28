@@ -1,7 +1,7 @@
 import pygame
+from objects.parallax_background import ParallaxBackground
 import utils.assets
 from objects.player import Player
-from objects.background import Background
 from interfaces.state import State
 
 class Level2(State):
@@ -16,7 +16,8 @@ class Level2(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        self.sprites.add(Background())
+        self.sprites.add(ParallaxBackground(2, 0))
+        self.sprites.add(ParallaxBackground(2, 1))
         self.sprites.add(Player())
         # Background music
         self.music = utils.assets.get_audio("level2.wav")
@@ -24,8 +25,8 @@ class Level2(State):
     def render(self):
         self.sprites.draw(self.game.screen)
     
-    def update(self):
-        self.sprites.update()
+    def update(self, dt):
+        self.sprites.update(dt)
         
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
