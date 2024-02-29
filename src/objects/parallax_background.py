@@ -10,7 +10,7 @@ class ParallaxBackground(pygame.sprite.Sprite):
         pygame (_type_): sprite
     """
     
-    moving_speed = 2
+    speed = 1
     
     def __init__(self, level, index, *groups):
         super().__init__(*groups)
@@ -18,17 +18,17 @@ class ParallaxBackground(pygame.sprite.Sprite):
         self.index = index
         self.image = utils.assets.get_sprite("parallax-"+str(level)+"-1.png")
         self.rect = self.image.get_rect(topleft=(configs.SCREEN_WIDTH * self.index, 0))
+        self.bg_images = []
         self.bgimage2 = utils.assets.get_sprite("parallax-"+str(level)+"-2.png")
         self.bgimage3 = utils.assets.get_sprite("parallax-"+str(level)+"-3.png")
         self.bgimage4 = utils.assets.get_sprite("parallax-"+str(level)+"-4.png")
+        self.bg_images.append(self.bgimage2)
+        self.bg_images.append(self.bgimage3)
+        self.bg_images.append(self.bgimage4)
     
     def update(self, dt):
-        self.rect.x -= self.moving_speed
+        self.rect.x -= self.speed
         if self.rect.right <= 0:
             self.rect.x = configs.SCREEN_WIDTH
-        self.image.blit(self.bgimage2, (configs.SCREEN_WIDTH * self.index, 0))
-        self.image.blit(self.bgimage3, (configs.SCREEN_WIDTH * self.index, 0))
-        self.image.blit(self.bgimage4, (configs.SCREEN_WIDTH * self.index, 0))
-        """
-        self.image.blit(self.bgimage4, ((self.bgX3 - bg_width) - scroll * speed, 0))
-        """  
+        for i in self.bg_images:
+            self.image.blit(i, ((configs.SCREEN_WIDTH * self.index) - self.speed, 0))
