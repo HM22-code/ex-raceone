@@ -18,7 +18,8 @@ class Level2(State):
         # Create Game objects
         self.sprites.add(ParallaxBackground(2, 0))
         self.sprites.add(ParallaxBackground(2, 1))
-        self.sprites.add(Player())
+        self.player = Player(self.sprites)
+        self.sprites.add(self.player)
         # Background music
         self.music = utils.assets.get_audio("level2.wav")
         
@@ -31,6 +32,8 @@ class Level2(State):
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             self.game.set_state(self.game.get_previous_state())
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+            self.player.shoot()
         
     def enter_state(self):
         self.music.set_volume(self.game.music_volume)

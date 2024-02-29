@@ -1,4 +1,5 @@
 import pygame.sprite
+from objects.bullet import Bullet
 import utils.assets
 import configs
 from enums.layers import Layers
@@ -12,9 +13,10 @@ class Player(pygame.sprite.Sprite):
     
     velocity = 5
     
-    def __init__(self, *groups):
+    def __init__(self, bullets,*groups):
         super().__init__(*groups)
         self._layer = Layers.PLAYER
+        self.bullets = bullets
         self.image = utils.assets.get_sprite("player.png")
         self.rect = self.image.get_rect(bottomleft=(50, configs.SCREEN_HEIGHT-20))
         
@@ -28,3 +30,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.y -= self.velocity
         if keys[pygame.K_DOWN] and self.rect.y < configs.SCREEN_HEIGHT - self.rect.height:
             self.rect.y += self.velocity
+                
+    def shoot(self):
+        bullet = Bullet(self.rect.right, self.rect.centery)
+        bullet.add(self.bullets)
