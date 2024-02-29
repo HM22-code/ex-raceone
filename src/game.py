@@ -13,6 +13,7 @@ class Game:
         # Init game running
         self.running = True
         # Initialize Pygame
+        pygame.mixer.pre_init(44100, 16, 2, 4096)
         pygame.init()
         # Create the screen
         self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT), pygame.FULLSCREEN|pygame.SCALED)
@@ -61,6 +62,8 @@ class Game:
         self.current_state.enter_state()
         
     def fadein(self):
+        """ Fade the screen
+        """
         fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
         fade.fill(pygame.color.Color("black"))
         for alpha in range(0, 256, 1):
@@ -81,8 +84,7 @@ class Game:
             self.get_current_state().render()
             self.get_current_state().update(self.dt)
             pygame.display.flip()
-            
-            
+              
     def quit(self):
         """ Quit game program
         """
