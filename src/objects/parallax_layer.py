@@ -15,7 +15,7 @@ class ParallaxLayer(pygame.sprite.Sprite):
     def __init__(self, level, index, *groups):
         super().__init__(*groups)
         self._layer = Layers.BACKGROUND
-        self.image = utils.assets.get_sprite("parallax-2-"+str(level)+".png")
+        self.image = utils.assets.get_sprite("parallax-"+str(level)+".png")
         self.rect = self.image.get_rect(topleft=(configs.SCREEN_WIDTH * index, 0))
         self.level = level
     

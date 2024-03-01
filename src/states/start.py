@@ -6,7 +6,7 @@ from states.ending import Ending
 from objects.background import Background
 from objects.title import Title
 from interfaces.state import State
-from states.menu import Menu
+from states.level import Level
 from states.option import Option
 
 class Start(State):
@@ -30,7 +30,7 @@ class Start(State):
         self.music = utils.assets.get_audio("menu.wav")
         
     def start(self):
-        self.game.set_state(Menu(self.game))
+        self.game.set_state(Level(self.game))
     
     def options(self):
         self.game.set_state(Option(self.game))

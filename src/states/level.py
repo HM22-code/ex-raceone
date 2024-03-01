@@ -5,7 +5,7 @@ import utils.assets
 from objects.player import Player
 from interfaces.state import State
 
-class Level1(State):
+class Level(State):
     """ Level state class
 
     Args:
@@ -17,8 +17,7 @@ class Level1(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        self.sprites.add(ParallaxLayer(1, 0))
-        self.sprites.add(ParallaxLayer(1, 1))
+        self.sprites.add(ParallaxBackground(0))
         self.sprites.add(ParallaxLayer(2, 0))
         self.sprites.add(ParallaxLayer(2, 1))
         self.sprites.add(ParallaxLayer(3, 0))
