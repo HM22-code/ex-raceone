@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         self._layer = Layers.PLAYER
         self.bullets = bullets
         self.image = utils.assets.get_sprite("player.png")
-        self.rect = self.image.get_rect(bottomleft=(50, configs.SCREEN_HEIGHT-20))
+        self.rect = self.image.get_rect(topleft=(50, configs.SCREEN_HEIGHT//2))
         self.velocity = 5
         
     def update(self, dt):
