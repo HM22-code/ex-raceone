@@ -10,9 +10,7 @@ class ParallaxBackground(pygame.sprite.Sprite):
         pygame (_type_): sprite
     """
     
-    speed = 1
-    
-    def __init__(self, index, *groups):
+    def __init__(self, index: int, *groups):
         super().__init__(*groups)
         self._layer = Layers.BACKGROUND
         self.index = index

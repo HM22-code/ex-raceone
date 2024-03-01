@@ -12,7 +12,7 @@ class ParallaxLayer(pygame.sprite.Sprite):
     
     speed = 16
     
-    def __init__(self, level, index, *groups):
+    def __init__(self, level: int, index: int, *groups):
         super().__init__(*groups)
         self._layer = Layers.BACKGROUND
         self.image = utils.assets.get_sprite("parallax-"+str(level)+".png")
@@ -20,6 +20,6 @@ class ParallaxLayer(pygame.sprite.Sprite):
         self.level = level
     
     def update(self, dt):
-        self.rect.x -= (self.speed/self.level)
+        self.rect.x -= (self.speed//self.level)
         if self.rect.right <= 0:
             self.rect.x = configs.SCREEN_WIDTH
