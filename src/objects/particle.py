@@ -3,14 +3,18 @@ import random
 from enums.layers import Layers
 
 class Particle(pygame.sprite.Sprite):
+    """ Particle sprite class
+    
     # a particle is...
     # a thing that exists at a location
     # typically moves around
     # typically changes over time
     # and typically disappears after a certain amount of time
     # [loc, velocity, timer]
-    particles = []
-    color = (255, 255, 255)
+
+    Args:
+        pygame (_type_): sprite
+    """
     
     def __init__(self, x, y, width, height,*groups):
         super().__init__(*groups)
@@ -19,6 +23,8 @@ class Particle(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.particles = []
+        self.color = (255, 255, 255)
         
     def update(self, dt):
         self.particles.append([[self.rect.x, self.rect.y], [random.randint(0,20) / 10 - 1, -2], random.randint(4,6)])

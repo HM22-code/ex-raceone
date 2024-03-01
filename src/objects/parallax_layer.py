@@ -10,14 +10,13 @@ class ParallaxLayer(pygame.sprite.Sprite):
         pygame (_type_): sprite
     """
     
-    speed = 16
-    
     def __init__(self, level: int, index: int, *groups):
         super().__init__(*groups)
         self._layer = Layers.BACKGROUND
         self.image = utils.assets.get_sprite("parallax-"+str(level)+".png")
         self.rect = self.image.get_rect(topleft=(configs.SCREEN_WIDTH * index, 0))
         self.level = level
+        self.speed = 16
     
     def update(self, dt):
         self.rect.x -= (self.speed//self.level)

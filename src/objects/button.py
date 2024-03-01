@@ -1,10 +1,14 @@
 import pygame.sprite
 from enums.layers import Layers
 from objects.text import Text
+from enums.events import Events
 
 class Button(pygame.sprite.Sprite):
-    
-    MOUSEHOVER = pygame.USEREVENT + 1
+    """ Button sprite class
+
+    Args:
+        pygame (_type_): sprite
+    """
     
     def __init__(self, x, y, width, height, text, action, *groups):
         super().__init__(*groups)
@@ -19,7 +23,7 @@ class Button(pygame.sprite.Sprite):
         
     def update(self, dt):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
-            pygame.event.post(pygame.event.Event(self.MOUSEHOVER))
+            pygame.event.post(pygame.event.Event(Events.MOUSEHOVER))
             self.image.fill(pygame.color.Color("darkorchid1"))
         else:
             self.image.fill(pygame.color.Color("darkorchid2"))

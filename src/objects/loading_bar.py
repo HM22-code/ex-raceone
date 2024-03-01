@@ -1,6 +1,11 @@
 import pygame
 
 class LoadingBar(pygame.sprite.Sprite):
+    """ LoadingBar sprite class
+
+    Args:
+        pygame (_type_): sprite
+    """
     
     def __init__(self, x, y, width, height, max_value):
         super().__init__()

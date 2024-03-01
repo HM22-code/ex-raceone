@@ -4,8 +4,11 @@ import configs
 from enums.layers import Layers
 
 class Bullet(pygame.sprite.Sprite):
-    
-    velocity = 10
+    """ Bullet sprite class
+
+    Args:
+        pygame (_type_): sprite
+    """
     
     def __init__(self, x, y, *groups):
         super().__init__(*groups)
@@ -13,11 +16,13 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.Surface((8, 8))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.frame_index = 0
+        self.frame_number = 6
+        self.velocity = 10
         self.animation = []
         self.import_animations()
         
     def import_animations(self):
-        for i in range(0, 5):
+        for i in range(0, self.frame_number - 1):
             self.animation.append(utils.assets.get_sprite("bullet-"+str(i)+".png"))
     
     def animate(self, fps, loop=True):

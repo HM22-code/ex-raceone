@@ -15,11 +15,12 @@ class Background(pygame.sprite.Sprite):
         self.image = utils.assets.get_sprite("background-0.png")
         self.rect = self.image.get_rect(topleft=(0, 0))
         self.frame_index = 0
+        self.frame_number = 49
         self.animation = []
         self.import_animations()
         
     def import_animations(self):
-        for i in range(0, 48):
+        for i in range(0, self.frame_number - 1):
             self.animation.append(utils.assets.get_sprite("background-"+str(i)+".png"))
         
     def animate(self, fps, loop=True):

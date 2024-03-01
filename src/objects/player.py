@@ -11,14 +11,13 @@ class Player(pygame.sprite.Sprite):
         pygame (_type_): sprite
     """
     
-    velocity = 5
-    
     def __init__(self, bullets,*groups):
         super().__init__(*groups)
         self._layer = Layers.PLAYER
         self.bullets = bullets
         self.image = utils.assets.get_sprite("player.png")
         self.rect = self.image.get_rect(bottomleft=(50, configs.SCREEN_HEIGHT-20))
+        self.velocity = 5
         
     def update(self, dt):
         keys = pygame.key.get_pressed()
