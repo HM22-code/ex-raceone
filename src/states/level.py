@@ -16,7 +16,10 @@ class Level(State):
         super().__init__(game)
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
-        # Create Game objects
+        self.bullets = pygame.sprite.Group()
+        self.enemies = pygame.sprite.Group()
+        self.obstacles = pygame.sprite.Group()
+        # Game objects
         self.sprites.add(ParallaxBackground(0))
         self.sprites.add(ParallaxLayer(2, 0))
         self.sprites.add(ParallaxLayer(2, 1))
@@ -26,7 +29,7 @@ class Level(State):
         self.sprites.add(ParallaxLayer(4, 1))
         self.player = Player(self.sprites)
         self.sprites.add(self.player)
-        # Background music
+        # Import music and sounds
         self.music = utils.assets.get_audio("level1.wav")
         self.shoot_sound = utils.assets.get_audio("sfx_wpn_laser8.wav")
     
