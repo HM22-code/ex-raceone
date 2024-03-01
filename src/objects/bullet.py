@@ -5,7 +5,7 @@ from enums.layers import Layers
 
 class Bullet(pygame.sprite.Sprite):
     
-    velocity = 5
+    velocity = 10
     
     def __init__(self, x, y, *groups):
         super().__init__(*groups)
@@ -17,7 +17,7 @@ class Bullet(pygame.sprite.Sprite):
         self.import_animations()
         
     def import_animations(self):
-        for i in range(0, 6):
+        for i in range(0, 5):
             self.animation.append(utils.assets.get_sprite("bullet-"+str(i)+".png"))
     
     def animate(self, fps, loop=True):
