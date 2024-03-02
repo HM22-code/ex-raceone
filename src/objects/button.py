@@ -24,9 +24,9 @@ class Button(pygame.sprite.Sprite):
     def update(self, dt):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
             pygame.event.post(pygame.event.Event(Events.MOUSEHOVER))
-            self.image.fill(pygame.color.Color("darkorchid1"))
+            self.image.fill(pygame.color.Color("seagreen3"))
         else:
-            self.image.fill(pygame.color.Color("darkorchid2"))
+            self.image.fill(pygame.color.Color("seagreen4"))
         self.image.blit(self.text_object.image, self.text_object.image.get_rect(center = self.image.get_rect().center))
                  
 
