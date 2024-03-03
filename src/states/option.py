@@ -42,7 +42,7 @@ class Option(State):
         if self.sound_slider.rect.collidepoint((mx, my)):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.sound_slider.move_slider((mx, my))
-                self.game.music_volume = self.sound_slider.get_value()
+                self.game.sound_volume = self.sound_slider.get_value()
             
     def enter_state(self):
         return super().enter_state()

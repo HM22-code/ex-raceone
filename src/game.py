@@ -76,13 +76,13 @@ class Game:
         """ Game loop
         """
         while self.running:
-            self.dt = self.clock.tick(configs.FPS)/1000
+            dt = self.clock.tick(configs.FPS)/1000
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.quit()
                 self.get_current_state().handle_event(event)
             self.get_current_state().render()
-            self.get_current_state().update(self.dt)
+            self.get_current_state().update(dt)
             pygame.display.flip()
               
     def quit(self):
