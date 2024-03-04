@@ -13,7 +13,7 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y, *groups):
         super().__init__(*groups)
         self.layer = Layers.OBSTACLE
-        self.image = pygame.Surface((8, 8))
+        self.image = pygame.Surface((25, 25))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.frame_index = 0
         self.frame_number = 6
