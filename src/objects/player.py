@@ -11,10 +11,11 @@ class Player(pygame.sprite.Sprite):
         pygame (_type_): sprite
     """
     
-    def __init__(self, bullets,*groups):
+    def __init__(self, bullets, sprites,*groups):
         super().__init__(*groups)
         self._layer = Layers.PLAYER
         self.bullets = bullets
+        self.sprites = sprites
         self.image = utils.assets.get_sprite("player.png")
         self.rect = self.image.get_rect(topleft=(50, configs.SCREEN_HEIGHT//2))
         self.velocity = 5
@@ -33,3 +34,4 @@ class Player(pygame.sprite.Sprite):
     def shoot(self):
         bullet = Bullet(self.rect.right, self.rect.centery)
         bullet.add(self.bullets)
+        bullet.add(self.sprites)
