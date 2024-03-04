@@ -22,8 +22,17 @@ class Text(pygame.sprite.Sprite):
         """
         super().__init__(*groups)
         self._layer = Layers.UI
+        self.text = text
+        self.antialias = True
+        self.color = color
         self.font = utils.assets.load_font(font_name, font_size)
-        self.image = self.font.render(text, True, color)
+        self.image = self.font.render(self.text, self.antialias, self.color)
         self.rect = self.image.get_rect(center=(self.image.get_rect().center))
         self.rect.x = x
         self.rect.y = y
+        
+    def rerender(self):
+        self.image = self.image = self.font.render(self.text, self.antialias, self.color)
+        
+    def update(self, dt):
+        self.rerender()
