@@ -25,6 +25,7 @@ class Level(State):
         self.bullets = pygame.sprite.Group()
         self.enemies = pygame.sprite.Group()
         self.obstacles = pygame.sprite.Group()
+        self.players = pygame.sprite.GroupSingle()
         # Game objects
         self.sprites.add(ParallaxBackground(0))
         self.sprites.add(ParallaxLayer(2, 0))
@@ -34,6 +35,7 @@ class Level(State):
         self.sprites.add(ParallaxLayer(4, 0))
         self.sprites.add(ParallaxLayer(4, 1))
         self.player = Player(self.bullets, self.sprites)
+        self.players.add(self.player)
         self.sprites.add(self.player)
         # Import music and sounds
         self.music = utils.assets.get_audio("level1.wav")
@@ -64,6 +66,8 @@ class Level(State):
             self.sprites.add(enemy)
         # Check for collisions
         for enemy in pygame.sprite.groupcollide(self.enemies, self.bullets, True, True):
+            self.explosion_sound.play()
+        for enemy in pygame.sprite.groupcollide(self.enemies, self.players, True, False):
             self.explosion_sound.play()
         
     def enter_state(self):
