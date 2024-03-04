@@ -1,7 +1,13 @@
 import pygame
 from objects.parallax_background import ParallaxBackground
 from objects.parallax_layer import ParallaxLayer
+from enums.events import Events
+from objects.drone import Drone
+from objects.plane import Plane
+from objects.robot import Robot
 import utils.assets
+import random
+import configs
 from objects.player import Player
 from interfaces.state import State
 
@@ -45,6 +51,15 @@ class Level(State):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
             self.player.shoot()
             self.shoot_sound.play()
+        if event.type == Events.ENEMY:
+            match random.choice(["Drone", "Robot", "Plane"]):
+                case "Drone":
+                    enemy = Drone(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT))
+                case "Robot":
+                    enemy = Robot(configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT - 40)
+                case "Plane":
+                    enemy = Plane(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT // 4))
+            self.sprites.add(enemy)
         
     def enter_state(self):
         self.shoot_sound.set_volume(self.game.sound_volume)

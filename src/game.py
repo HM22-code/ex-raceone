@@ -1,6 +1,7 @@
 import pygame
 import configs
 from interfaces.state import State
+from enums.events import Events
 import utils.assets
 import sys
 from states.boot import Boot
@@ -24,6 +25,8 @@ class Game:
         self.clock = pygame.time.Clock()
         self.music_volume = configs.MUSIC_VOLUME
         self.sound_volume = configs.SOUND_VOLUME
+        # Events timer
+        pygame.time.set_timer(Events.ENEMY, 2000)
         # Init Game state manager
         self.init_state()
         
