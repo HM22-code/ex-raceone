@@ -78,6 +78,8 @@ class Start(State):
         self.sprites.update(dt)
         
     def handle_event(self, event):
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+            self.start()
         for button in self.buttons:
             if button.rect.collidepoint(pygame.mouse.get_pos()):
                 if event.type == pygame.MOUSEBUTTONDOWN:
