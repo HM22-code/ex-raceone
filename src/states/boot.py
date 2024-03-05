@@ -17,7 +17,7 @@ class Boot(State):
         # Create Game objects
         self.loading_bar = LoadingBar((configs.SCREEN_WIDTH - configs.LOADING_BAR_WIDTH) // 2, (configs.SCREEN_HEIGHT - configs.LOADING_BAR_HEIGHT)// 4, configs.LOADING_BAR_WIDTH, configs.LOADING_BAR_HEIGHT, configs.LOADING_BAR_MAX)
         self.sprites.add(self.loading_bar)
-        self.sprites.add(Text(configs.SCREEN_WIDTH // 2.5, configs.SCREEN_HEIGHT // 2.5, "made with", "retro-tech-font.ttf", 50, pygame.color.Color("black")))
+        self.sprites.add(Text(configs.SCREEN_WIDTH // 2.5, configs.SCREEN_HEIGHT // 2.5, "made with", "retro-tech-font.ttf", 10, pygame.color.Color("black")))
         self.sprites.add(Logo())
         self.ready = False
         self.thread = None

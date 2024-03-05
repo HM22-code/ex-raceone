@@ -4,10 +4,10 @@ A retro side scroller game made with pygame
 
 ## Look and feel
 
-- SNES style graphics 16 bit
-- 16*9 for widescreen diplays
+- NES style graphics 8 bit
+- fullscreen for widescreen diplays
 - HD resolutions must be divisible by the games resolution so scaling works
-- Native resolution is (1280*720) (480*270) (this is 3/4 1/4 of 1920*1080)
+- Native resolution is (256*240)
 
 ## Guides & Advises
 
@@ -128,3 +128,8 @@ The entitity can commands to this state group, and the state group will take car
   - fond panorama sur les wastelands
   - scrolling vers le ciel
   - fin
+
+## Credits
+
+ansimuz - graphics
+Juhani Junkala - musics & sounds

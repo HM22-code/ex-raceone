@@ -2,9 +2,7 @@ import pygame
 from objects.parallax_background import ParallaxBackground
 from objects.parallax_layer import ParallaxLayer
 from enums.events import Events
-from objects.drone import Drone
-from objects.plane import Plane
-from objects.robot import Robot
+from objects.enemy import Enemy
 import utils.assets
 import random
 import configs
@@ -55,13 +53,9 @@ class Level(State):
             self.player.shoot()
             self.shoot_sound.play()
         if event.type == Events.ENEMY:
-            match random.choice(["Drone", "Robot", "Plane"]):
-                case "Drone":
-                    enemy = Drone(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT))
-                case "Robot":
-                    enemy = Robot(configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT - 40)
-                case "Plane":
-                    enemy = Plane(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT // 4))
+            match random.choice(["Enemy"]):
+                case "Enemy":
+                    enemy = Enemy(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT))
             self.enemies.add(enemy)
             self.sprites.add(enemy)
         # Check for collisions

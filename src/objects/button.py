@@ -17,16 +17,16 @@ class Button(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.text_object = Text(self.rect.right // 2, self.rect.bottom // 2, text, "16-bit-font.ttf", 36, pygame.color.Color("white"))
+        self.text_object = Text(self.rect.right // 2, self.rect.bottom // 2, text, "16-bit-font.ttf", 15, pygame.color.Color("white"))
         self.action = action
         self.active = True
         
     def update(self, dt):
         if self.rect.collidepoint(pygame.mouse.get_pos()):
             pygame.event.post(pygame.event.Event(Events.MOUSEHOVER))
-            self.image.fill(pygame.color.Color("seagreen3"))
+            self.image.fill(pygame.color.Color("#9241f3"))
         else:
-            self.image.fill(pygame.color.Color("seagreen4"))
+            self.image.fill(pygame.color.Color("#6110a2"))
         self.image.blit(self.text_object.image, self.text_object.image.get_rect(center = self.image.get_rect().center))
                  
 
