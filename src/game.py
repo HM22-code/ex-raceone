@@ -26,7 +26,7 @@ class Game:
         self.music_volume = configs.MUSIC_VOLUME
         self.sound_volume = configs.SOUND_VOLUME
         # Events timer
-        pygame.time.set_timer(Events.ENEMY, 2000)
+        pygame.time.set_timer(Events.ENEMY, 750)
         # Init Game state manager
         self.init_state()
         

@@ -19,10 +19,10 @@ class Button(pygame.sprite.Sprite):
         self.rect.y = y
         self.text_object = Text(self.rect.right // 2, self.rect.bottom // 2, text, "8-bit-font.ttf", 15, pygame.color.Color("white"))
         self.action = action
-        self.active = True
+        self.active = False
         
     def update(self, dt):
-        if self.rect.collidepoint(pygame.mouse.get_pos()):
+        if self.rect.collidepoint(pygame.mouse.get_pos()) or self.active:
             pygame.event.post(pygame.event.Event(Events.MOUSEHOVER))
             self.image.fill(pygame.color.Color("#9241f3"))
         else:
