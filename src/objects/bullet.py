@@ -16,13 +16,13 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.Surface((5, 5))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.frame_index = 0
-        self.frame_number = 6
+        self.frame_number = 5
         self.velocity = 2
         self.animation = []
         self.import_animations()
         
     def import_animations(self):
-        for i in range(0, self.frame_number - 1):
+        for i in range(0, self.frame_number):
             self.animation.append(utils.assets.get_sprite("bullet-"+str(i)+".png"))
     
     def animate(self, fps, loop=True):

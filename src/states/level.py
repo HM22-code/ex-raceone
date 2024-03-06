@@ -36,8 +36,8 @@ class Level(State):
         self.players.add(self.player)
         self.sprites.add(self.player)
         # Import music and sounds
-        self.music = utils.assets.get_audio("level1.wav")
-        self.shoot_sound = utils.assets.get_audio("sfx_wpn_laser8.wav")
+        self.music = utils.assets.get_audio("level.wav")
+        self.shoot_sound = utils.assets.get_audio("laser.wav")
         self.explosion_sound = utils.assets.get_audio("explosion.wav")
     
     def render(self):

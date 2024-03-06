@@ -16,7 +16,7 @@ class Enemy(pygame.sprite.Sprite):
         self.import_animations()
         
     def import_animations(self):
-        for i in range(0, self.frame_number - 1):
+        for i in range(0, self.frame_number):
             self.animation.append(utils.assets.get_sprite("enemy-"+str(i)+".png"))
     
     def animate(self, fps, loop=True):
@@ -32,4 +32,4 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x -= self.velocity
         if self.rect.right <= 0:
             self.kill()
-        self.animate(15 * dt, True)
+        self.animate(10 * dt, True)
