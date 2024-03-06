@@ -38,10 +38,10 @@ class Level(State):
         self.sprites.add(self.player)
         # Game stats
         self.score = 0
-        self.score_ui = Text(0, 0, str(self.score), "score-font.ttf", 10, pygame.color.Color("white"))
+        self.score_ui = Text(10, 5, str(self.score), "score-font.ttf", 10, pygame.color.Color("white"))
         self.sprites.add(self.score_ui)
         self.life = 3
-        self.life_ui = Text(configs.SCREEN_WIDTH - 50, 0, str(self.life)+" x A", "score-font.ttf", 10, pygame.color.Color("white"))
+        self.life_ui = Text(configs.SCREEN_WIDTH - 50, 5, str(self.life)+" x A", "score-font.ttf", 10, pygame.color.Color("white"))
         self.sprites.add(self.life_ui)
         # Import music and sounds
         self.music = utils.assets.get_audio("level.wav")
