@@ -29,6 +29,8 @@ class Start(State):
         self.create_buttons()
         # Background music
         self.music = utils.assets.get_audio("menu.wav")
+        self.select_sound = utils.assets.get_audio("select.wav")
+        self.enter_sound = utils.assets.get_audio("enter.wav")
         
     def start(self):
         self.game.set_state(Level(self.game))
@@ -73,6 +75,7 @@ class Start(State):
             self.buttons.append(button)
             
     def change_selection(self, direction):
+        self.select_sound.play()
         self.selected_button = (self.selected_button + direction) % len(self.buttons)
         for i, button in enumerate(self.buttons):
             button.active = (i == self.selected_button)
@@ -91,6 +94,7 @@ class Start(State):
             elif event.key == pygame.K_UP:
                 self.change_selection(-1)
             elif event.key == pygame.K_RETURN:
+                self.enter_sound.play()
                 if self.selected_button == 0:  # Start button
                     self.start()
                 elif self.selected_button == 1:  # Options button
@@ -108,6 +112,8 @@ class Start(State):
                     
     def enter_state(self):
         self.music.set_volume(self.game.music_volume)
+        self.select_sound.set_volume(self.game.sound_volume)
+        self.enter_sound.set_volume(self.game.sound_volume)
         self.music.play(loops = -1)
         
     def exit_state(self):
