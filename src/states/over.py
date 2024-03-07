@@ -36,7 +36,8 @@ class Over(State):
             self.game.set_state(self.game.get_previous_state().previous_state)
 
     def enter_state(self):
-        return super().enter_state()
+        pygame.mouse.set_visible(False)
     
     def exit_state(self):
         self.game.fadein()
+        pygame.mouse.set_visible(True)
