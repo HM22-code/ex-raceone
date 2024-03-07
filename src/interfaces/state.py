@@ -6,6 +6,7 @@ class State(ABC):
     
     def __init__(self, game):
         self.game = game
+        self.previous_state = self.game.get_previous_state()
     
     @abstractmethod 
     def handle_event(self, event):

@@ -4,6 +4,7 @@ from objects.parallax_layer import ParallaxLayer
 from enums.events import Events
 from objects.enemy import Enemy
 from objects.text import Text
+from states.over import Over
 import utils.assets
 import random
 import configs
@@ -37,11 +38,11 @@ class Level(State):
         self.players.add(self.player)
         self.sprites.add(self.player)
         # Game stats
-        self.score = 0
-        self.score_ui = Text(10, 5, str(self.score), "score-font.ttf", 10, pygame.color.Color("white"))
+        self.game.score = 0
+        self.game.life = 3
+        self.score_ui = Text(10, 5, str(self.game.score), "score-font.ttf", 10, pygame.color.Color("white"))
         self.sprites.add(self.score_ui)
-        self.life = 3
-        self.life_ui = Text(configs.SCREEN_WIDTH - 50, 5, str(self.life)+" x A", "score-font.ttf", 10, pygame.color.Color("white"))
+        self.life_ui = Text(configs.SCREEN_WIDTH - 50, 5, str(self.game.life)+" x A", "score-font.ttf", 10, pygame.color.Color("white"))
         self.sprites.add(self.life_ui)
         # Import music and sounds
         self.music = utils.assets.get_audio("level.wav")
@@ -58,30 +59,31 @@ class Level(State):
         
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            self.game.set_state(self.game.get_previous_state())
+            self.game.set_state(self.previous_state)
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
             self.player.shoot()
             self.shoot_sound.play()
         if event.type == Events.ENEMY:
-            enemy = Enemy(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT))
+            enemy = Enemy(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT-29))
             self.enemies.add(enemy)
             self.sprites.add(enemy)
         # Check for collisions
         for enemy in pygame.sprite.groupcollide(self.enemies, self.bullets, True, True):
             self.explosion_sound.play()
-            self.score += 5
-            self.score_ui.text = str(self.score) 
+            self.game.score += 5
+            self.score_ui.text = str(self.game.score) 
         for enemy in pygame.sprite.groupcollide(self.enemies, self.players, True, False):
             self.hit_sound.play()
-            self.life -= 1
-            if self.life < 0 :
+            self.game.life -= 1
+            if self.game.life < 0 :
                 self.gameover()
-            self.life_ui.text = str(self.life)+" x A"
+            self.life_ui.text = str(self.game.life)+" x A"
     
     def gameover(self):
         self.player.kill()
         self.gameover_sound.play()
         self.game.fadein()
+        self.game.set_state(Over(self.game))
         
     def enter_state(self):
         self.shoot_sound.set_volume(self.game.sound_volume)

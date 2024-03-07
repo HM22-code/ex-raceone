@@ -71,7 +71,7 @@ class Option(State):
     def handle_slider_event(self, event):
         mx, my = pygame.mouse.get_pos()
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            self.game.set_state(self.game.get_previous_state())
+            self.game.set_state(self.previous_state)
         if self.music_slider.rect.collidepoint((mx, my)):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.music_slider.move_slider((mx, my))

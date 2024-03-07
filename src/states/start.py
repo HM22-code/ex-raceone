@@ -108,6 +108,7 @@ class Start(State):
         for button in self.buttons:
             if button.rect.collidepoint(pygame.mouse.get_pos()):
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    self.enter_sound.play()
                     button.action()
                     
     def enter_state(self):

@@ -28,7 +28,7 @@ class Ending(State):
         
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            self.game.set_state(self.game.get_previous_state())
+            self.game.set_state(self.previous_state)
         
     def enter_state(self):
         self.music.set_volume(self.game.music_volume)

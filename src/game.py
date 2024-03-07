@@ -25,6 +25,9 @@ class Game:
         self.clock = pygame.time.Clock()
         self.music_volume = configs.MUSIC_VOLUME
         self.sound_volume = configs.SOUND_VOLUME
+        # Init game stats
+        self.score = 0
+        self.life = 3
         # Events timer
         pygame.time.set_timer(Events.ENEMY, 1000)
         # Init Game state manager
@@ -33,9 +36,9 @@ class Game:
     def init_state(self):
         """ Init state
         """
+        self.previous_state = None
         self.current_state = Boot(self)
         self.current_state.enter_state()
-        self.previous_state = None
         
     def get_current_state(self):
         """ Get current state
