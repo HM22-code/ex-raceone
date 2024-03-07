@@ -47,6 +47,8 @@ class Level(State):
         self.music = utils.assets.get_audio("level.wav")
         self.shoot_sound = utils.assets.get_audio("laser.wav")
         self.explosion_sound = utils.assets.get_audio("explosion.wav")
+        self.gameover_sound = utils.assets.get_audio("gameover.wav")
+        self.hit_sound = utils.assets.get_audio("hit.wav")
     
     def render(self):
         self.sprites.draw(self.game.screen)
@@ -70,15 +72,32 @@ class Level(State):
             self.score += 5
             self.score_ui.text = str(self.score) 
         for enemy in pygame.sprite.groupcollide(self.enemies, self.players, True, False):
-            self.explosion_sound.play()
+            self.hit_sound.play()
             self.life -= 1
+            if self.life < 0 :
+                self.gameover()
             self.life_ui.text = str(self.life)+" x A"
+    
+    def gameover(self):
+        self.player.kill()
+        self.gameover_sound.play()
+        fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
+        fade.fill(pygame.color.Color("black"))
+        for alpha in range(0, 151, 1):
+            fade.set_alpha(alpha)
+            self.game.screen.blit(fade, (0, 0))
+            pygame.display.update(fade.get_rect())
+            pygame.time.delay(3)
         
     def enter_state(self):
         self.shoot_sound.set_volume(self.game.sound_volume)
         self.explosion_sound.set_volume(self.game.sound_volume)
+        self.gameover_sound.set_volume(self.game.sound_volume)
+        self.hit_sound.set_volume(self.game.sound_volume)
         self.music.set_volume(self.game.music_volume)
         self.music.play(loops = -1)
+        pygame.mouse.set_visible(False)
     
     def exit_state(self):
         self.music.stop()
+        pygame.mouse.set_visible(True)

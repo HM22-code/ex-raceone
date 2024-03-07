@@ -33,6 +33,8 @@ class Ending(State):
     def enter_state(self):
         self.music.set_volume(self.game.music_volume)
         self.music.play(loops = -1)
+        pygame.mouse.set_visible(False)
     
     def exit_state(self):
         self.music.stop()
+        pygame.mouse.set_visible(True)
