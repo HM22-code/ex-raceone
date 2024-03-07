@@ -81,13 +81,7 @@ class Level(State):
     def gameover(self):
         self.player.kill()
         self.gameover_sound.play()
-        fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
-        fade.fill(pygame.color.Color("black"))
-        for alpha in range(0, 151, 1):
-            fade.set_alpha(alpha)
-            self.game.screen.blit(fade, (0, 0))
-            pygame.display.update(fade.get_rect())
-            pygame.time.delay(3)
+        self.game.fadein()
         
     def enter_state(self):
         self.shoot_sound.set_volume(self.game.sound_volume)
