@@ -29,7 +29,7 @@ class Game:
         self.score = 0
         self.life = 3
         # Events timer
-        pygame.time.set_timer(Events.ENEMY, 1000)
+        pygame.time.set_timer(Events.ENEMY, 750)
         # Init Game state manager
         self.init_state()
         
