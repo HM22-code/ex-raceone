@@ -19,6 +19,7 @@ class Slider(pygame.sprite.Sprite):
         self.min = min
         self.max = max
         self.handle_width = 10
+        self.active = False
         self.initial_val = (self.slider_right_pos - self.slider_left_pos) * initial_val #percentage
         self.image = pygame.Surface([size[0], size[1]])
         self.rect = self.image.get_rect(topleft=(self.slider_left_pos, self.slider_top_pos))
@@ -26,11 +27,17 @@ class Slider(pygame.sprite.Sprite):
         self.handle_rect = pygame.Rect(self.initial_val, 0, self.handle_width, size[1])
         
     def update(self, dt):
-        pygame.draw.rect(self.image, "darkgray", self.container_rect)
-        pygame.draw.rect(self.image, "black", self.handle_rect)
+        pygame.draw.rect(self.image, pygame.color.Color("darkgray"), self.container_rect)
+        if self.active:
+            pygame.draw.rect(self.image, pygame.color.Color("#6110a2"), self.handle_rect)
+        else:
+            pygame.draw.rect(self.image, pygame.color.Color("black"), self.handle_rect)
         
     def move_slider(self, mouse_pos):
         self.handle_rect.centerx = mouse_pos[0] - self.slider_left_pos
+    
+    def set_slider(self, value):
+        self.handle_rect.centerx = self.handle_rect.centerx + value
         
     def get_value(self):
         val_range = self.slider_right_pos - self.slider_left_pos
