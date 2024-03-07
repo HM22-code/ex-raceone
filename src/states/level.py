@@ -61,9 +61,7 @@ class Level(State):
             self.player.shoot()
             self.shoot_sound.play()
         if event.type == Events.ENEMY:
-            match random.choice(["Enemy"]):
-                case "Enemy":
-                    enemy = Enemy(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT))
+            enemy = Enemy(configs.SCREEN_WIDTH, random.randint(0, configs.SCREEN_HEIGHT))
             self.enemies.add(enemy)
             self.sprites.add(enemy)
         # Check for collisions
