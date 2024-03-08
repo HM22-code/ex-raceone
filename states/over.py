@@ -15,10 +15,13 @@ class Over(State):
         # Sprite Groups
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
-        self.gameover_text = Text(configs.SCREEN_WIDTH // 2 - 75, configs.SCREEN_HEIGHT // 6, "Game Over", "bit.ttf", 40, pygame.color.Color("white"))
-        self.score_text = Text(configs.SCREEN_WIDTH // 2 - 60, configs.SCREEN_HEIGHT // 2.6, "score : ", "score.ttf", 20, pygame.color.Color("white"))
-        self.value_text = Text(configs.SCREEN_WIDTH // 2 + 30, configs.SCREEN_HEIGHT // 2.6, str(self.game.score), "score.ttf", 20, pygame.color.Color("white"))
-        self.enter_text = Text(configs.SCREEN_WIDTH // 2 - 70, configs.SCREEN_HEIGHT // 1.2, "press Enter to return menu", "retro.ttf", 10, pygame.color.Color("white"))
+        self.title_font = "bit.ttf"
+        self.upper_font = "score.ttf"
+        self.lower_font = "retro.ttf"
+        self.gameover_text = Text(configs.SCREEN_WIDTH // 2 - 75, configs.SCREEN_HEIGHT // 6, "Game Over", self.title_font, 40, pygame.color.Color("white"))
+        self.score_text = Text(configs.SCREEN_WIDTH // 2 - 60, configs.SCREEN_HEIGHT // 2.6, "score : ", self.upper_font, 20, pygame.color.Color("white"))
+        self.value_text = Text(configs.SCREEN_WIDTH // 2 + 30, configs.SCREEN_HEIGHT // 2.6, str(self.game.score), self.upper_font, 20, pygame.color.Color("white"))
+        self.enter_text = Text(configs.SCREEN_WIDTH // 2 - 70, configs.SCREEN_HEIGHT // 1.2, "press Enter to return menu", self.lower_font , 10, pygame.color.Color("white"))
         self.sprites.add(self.gameover_text)
         self.sprites.add(self.score_text)
         self.sprites.add(self.value_text)

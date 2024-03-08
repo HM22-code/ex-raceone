@@ -41,9 +41,10 @@ class Level(State):
         # Game stats
         self.game.score = 0
         self.game.life = 3
-        self.score_ui = Text(10, 5, str(self.game.score), "score.ttf", 10, pygame.color.Color("white"))
+        self.font = "score.ttf"
+        self.score_ui = Text(10, 5, str(self.game.score), self.font, 10, pygame.color.Color("white"))
         self.sprites.add(self.score_ui)
-        self.life_ui = Text(configs.SCREEN_WIDTH - 50, 5, str(self.game.life)+" x A", "score.ttf", 10, pygame.color.Color("white"))
+        self.life_ui = Text(configs.SCREEN_WIDTH - 50, 5, str(self.game.life)+" x A", self.font, 10, pygame.color.Color("white"))
         self.sprites.add(self.life_ui)
         # Import music and sounds
         if sys.platform == "emscripten":

@@ -20,12 +20,14 @@ class Ending(State):
         self.sprites = pygame.sprite.LayeredUpdates()
         # Create Game objects
         self.sprites.add(Background())
-        self.created_text = Text(configs.SCREEN_WIDTH // 2 - 50, configs.SCREEN_HEIGHT // 6, "Created by", "retro.ttf", 20, pygame.color.Color("white"))
-        self.creator_text = Text(configs.SCREEN_WIDTH // 2 - 40, configs.SCREEN_HEIGHT // 3.8, "jude erdrick", "score.ttf", 10, pygame.color.Color("white"))
-        self.graphics_text = Text(configs.SCREEN_WIDTH // 2 - 40, configs.SCREEN_HEIGHT // 2.2, "Graphics", "retro.ttf", 20, pygame.color.Color("white"))
-        self.graphic_text = Text(configs.SCREEN_WIDTH // 2 - 25, configs.SCREEN_HEIGHT // 1.8, "ansimuz", "score.ttf", 10, pygame.color.Color("white"))
-        self.musics_text = Text(configs.SCREEN_WIDTH // 2 - 75, configs.SCREEN_HEIGHT // 1.4, "Musics & sounds", "retro.ttf", 20, pygame.color.Color("white"))
-        self.music_text = Text(configs.SCREEN_WIDTH // 2 - 35, configs.SCREEN_HEIGHT // 1.22, "juhani junkala", "score.ttf", 10, pygame.color.Color("white"))
+        self.upper_font = "retro.ttf"
+        self.lower_font = "score.ttf"
+        self.created_text = Text(configs.SCREEN_WIDTH // 2 - 50, configs.SCREEN_HEIGHT // 6, "Created by", self.upper_font, 20, pygame.color.Color("white"))
+        self.creator_text = Text(configs.SCREEN_WIDTH // 2 - 40, configs.SCREEN_HEIGHT // 3.8, "jude erdrick", self.lower_font, 10, pygame.color.Color("white"))
+        self.graphics_text = Text(configs.SCREEN_WIDTH // 2 - 40, configs.SCREEN_HEIGHT // 2.2, "Graphics", self.upper_font, 20, pygame.color.Color("white"))
+        self.graphic_text = Text(configs.SCREEN_WIDTH // 2 - 25, configs.SCREEN_HEIGHT // 1.8, "ansimuz", self.lower_font, 10, pygame.color.Color("white"))
+        self.musics_text = Text(configs.SCREEN_WIDTH // 2 - 75, configs.SCREEN_HEIGHT // 1.4, "Musics & sounds", self.upper_font, 20, pygame.color.Color("white"))
+        self.music_text = Text(configs.SCREEN_WIDTH // 2 - 35, configs.SCREEN_HEIGHT // 1.22, "juhani junkala", self.lower_font, 10, pygame.color.Color("white"))
         self.sprites.add(self.created_text)
         self.sprites.add(self.creator_text)
         self.sprites.add(self.graphics_text)
