@@ -24,9 +24,9 @@ class Option(State):
         self.create_sliders()
         
     def create_sliders(self):
-        self.music_text = Text(configs.SCREEN_WIDTH // 2 - 50, configs.SCREEN_HEIGHT // 8, "Musics :", "8-bit-font.ttf", 15, pygame.color.Color("white"))
+        self.music_text = Text(configs.SCREEN_WIDTH // 2 - 50, configs.SCREEN_HEIGHT // 8, "Musics :", "bit.ttf", 15, pygame.color.Color("white"))
         self.music_slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 4), (configs.SLIDER_WIDTH, configs.SLIDER_HEIGHT), self.game.music_volume, configs.SLIDER_MIN, configs.SLIDER_MAX)
-        self.sound_text = Text(configs.SCREEN_WIDTH // 2 - 50, configs.SCREEN_HEIGHT // 2.6, "Sounds :", "8-bit-font.ttf", 15, pygame.color.Color("white"))
+        self.sound_text = Text(configs.SCREEN_WIDTH // 2 - 50, configs.SCREEN_HEIGHT // 2.6, "Sounds :", "bit.ttf", 15, pygame.color.Color("white"))
         self.sound_slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 2), (configs.SLIDER_WIDTH, configs.SLIDER_HEIGHT), self.game.sound_volume, configs.SLIDER_MIN, configs.SLIDER_MAX)
         self.sliders.append(self.music_slider)
         self.sliders.append(self.sound_slider)

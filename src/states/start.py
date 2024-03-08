@@ -1,5 +1,6 @@
 import pygame
 import utils.assets
+import sys, platform
 import configs
 from objects.button import Button
 from states.ending import Ending
@@ -28,9 +29,14 @@ class Start(State):
         self.selected_button = 0
         self.create_buttons()
         # Background music
-        self.music = utils.assets.get_audio("menu.wav")
-        self.select_sound = utils.assets.get_audio("select.wav")
-        self.enter_sound = utils.assets.get_audio("enter.wav")
+        if sys.platform == "emscripten":
+            self.music = utils.assets.get_audio("menu.ogg")
+            self.select_sound = utils.assets.get_audio("select.ogg")
+            self.enter_sound = utils.assets.get_audio("enter.ogg")
+        else:
+            self.music = utils.assets.get_audio("menu.wav")
+            self.select_sound = utils.assets.get_audio("select.wav")
+            self.enter_sound = utils.assets.get_audio("enter.wav")
         
     def start(self):
         self.game.set_state(Level(self.game))

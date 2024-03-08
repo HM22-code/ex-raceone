@@ -1,5 +1,6 @@
 import pygame
 import configs
+import asyncio
 from interfaces.state import State
 from enums.events import Events
 import utils.assets
@@ -78,7 +79,7 @@ class Game:
             pygame.display.update(fade.get_rect())
             pygame.time.delay(3)
     
-    def run(self):
+    async def main(self):
         """ Game loop
         """
         while self.running:
@@ -90,6 +91,7 @@ class Game:
             self.get_current_state().render()
             self.get_current_state().update(dt)
             pygame.display.flip()
+            await asyncio.sleep(0)
               
     def quit(self):
         """ Quit game program
@@ -97,3 +99,5 @@ class Game:
         self.running = False
         pygame.quit()
         sys.exit()
+
+asyncio.run(Game().main())

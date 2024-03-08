@@ -6,6 +6,7 @@ from objects.enemy import Enemy
 from objects.text import Text
 from states.over import Over
 import utils.assets
+import sys, platform
 import random
 import configs
 from objects.player import Player
@@ -40,16 +41,23 @@ class Level(State):
         # Game stats
         self.game.score = 0
         self.game.life = 3
-        self.score_ui = Text(10, 5, str(self.game.score), "score-font.ttf", 10, pygame.color.Color("white"))
+        self.score_ui = Text(10, 5, str(self.game.score), "score.ttf", 10, pygame.color.Color("white"))
         self.sprites.add(self.score_ui)
-        self.life_ui = Text(configs.SCREEN_WIDTH - 50, 5, str(self.game.life)+" x A", "score-font.ttf", 10, pygame.color.Color("white"))
+        self.life_ui = Text(configs.SCREEN_WIDTH - 50, 5, str(self.game.life)+" x A", "score.ttf", 10, pygame.color.Color("white"))
         self.sprites.add(self.life_ui)
         # Import music and sounds
-        self.music = utils.assets.get_audio("level.wav")
-        self.shoot_sound = utils.assets.get_audio("laser.wav")
-        self.explosion_sound = utils.assets.get_audio("explosion.wav")
-        self.gameover_sound = utils.assets.get_audio("gameover.wav")
-        self.hit_sound = utils.assets.get_audio("hit.wav")
+        if sys.platform == "emscripten":
+            self.music = utils.assets.get_audio("level.ogg")
+            self.shoot_sound = utils.assets.get_audio("laser.ogg")
+            self.explosion_sound = utils.assets.get_audio("explosion.ogg")
+            self.gameover_sound = utils.assets.get_audio("gameover.ogg")
+            self.hit_sound = utils.assets.get_audio("hit.ogg")
+        else:
+            self.music = utils.assets.get_audio("level.wav")
+            self.shoot_sound = utils.assets.get_audio("laser.wav")
+            self.explosion_sound = utils.assets.get_audio("explosion.wav")
+            self.gameover_sound = utils.assets.get_audio("gameover.wav")
+            self.hit_sound = utils.assets.get_audio("hit.wav")
     
     def render(self):
         self.sprites.draw(self.game.screen)
