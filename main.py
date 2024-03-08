@@ -4,7 +4,7 @@ import asyncio
 from interfaces.state import State
 from enums.events import Events
 import utils.assets
-import sys
+import sys, platform
 from states.boot import Boot
 
 class Game:
@@ -18,9 +18,12 @@ class Game:
         pygame.mixer.pre_init(44100, 16, 2, 4096)
         pygame.init()
         # Create the screen
-        self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT), pygame.FULLSCREEN|pygame.SCALED)
+        if sys.platform == "emscripten":
+            self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
+        else:
+            self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT), pygame.FULLSCREEN|pygame.SCALED)
         # Screen options
-        pygame.display.set_icon(utils.assets.load_sprite("icon.png"))
+        pygame.display.set_icon(utils.assets.load_sprite("favicon.png"))
         pygame.display.set_caption(configs.TITLE)
         # Clock to control FPS
         self.clock = pygame.time.Clock()
@@ -58,7 +61,7 @@ class Game:
         return self.previous_state
     
     def set_state(self, state: State):
-        """ Change the current state
+        """ Change current state
 
         Args:
             state (_type_): state
@@ -69,7 +72,7 @@ class Game:
         self.current_state.enter_state()
         
     def fadein(self):
-        """ Fade the screen
+        """ Fade screen
         """
         fade = pygame.Surface((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
         fade.fill(pygame.color.Color("black"))
@@ -79,7 +82,7 @@ class Game:
             pygame.display.update(fade.get_rect())
             pygame.time.delay(3)
     
-    async def main(self):
+    async def run(self):
         """ Game loop
         """
         while self.running:
@@ -100,4 +103,6 @@ class Game:
         pygame.quit()
         sys.exit()
 
-asyncio.run(Game().main())
+if __name__ == '__main__':
+    game = Game()
+    asyncio.run(game.run())

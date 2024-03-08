@@ -53,24 +53,40 @@ class Start(State):
     def create_buttons(self):
         """ Create buttons objects
         """
-        menu_items = [
-            {
-                'title' : 'Start',
-                'action' : lambda: self.start(),
-            },
-            {
-                'title' : 'Options',
-                'action' : lambda: self.options(),
-            },
-            {
-                'title' : 'Credits',
-                'action' : lambda: self.credits(),
-            },
-            {
-                'title' : 'Quit',
-                'action' : lambda: self.quit(),
-            }
-        ]
+        if sys.platform == "emscripten":
+            menu_items = [
+                {
+                    'title' : 'Start',
+                    'action' : lambda: self.start(),
+                },
+                {
+                    'title' : 'Options',
+                    'action' : lambda: self.options(),
+                },
+                {
+                    'title' : 'Credits',
+                    'action' : lambda: self.credits(),
+                }
+            ]
+        else:
+            menu_items = [
+                {
+                    'title' : 'Start',
+                    'action' : lambda: self.start(),
+                },
+                {
+                    'title' : 'Options',
+                    'action' : lambda: self.options(),
+                },
+                {
+                    'title' : 'Credits',
+                    'action' : lambda: self.credits(),
+                },
+                {
+                    'title' : 'Quit',
+                    'action' : lambda: self.quit(),
+                }
+            ]
         button_total_height = len(menu_items) * (configs.BUTTON_HEIGHT + configs.BUTTON_SPACING)
         starting_x = (configs.SCREEN_WIDTH - configs.BUTTON_WIDTH) // 2
         starting_y = (configs.SCREEN_HEIGHT - button_total_height) // 1.8
@@ -124,5 +140,5 @@ class Start(State):
         self.music.play(loops = -1)
         
     def exit_state(self):
-        self.music.fadeout(1000)
+        self.music.stop()
         self.game.fadein()

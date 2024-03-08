@@ -1,6 +1,7 @@
 import pygame
 import configs
 import threading
+import sys, platform
 from objects.loading_bar import LoadingBar
 import utils.assets
 from objects.logo import Logo
@@ -40,13 +41,20 @@ class Boot(State):
         self.sprites.update(dt)
         
     def handle_event(self, event):
-        if self.ready:
-            self.thread.join()
-            self.game.set_state(Start(self.game))
+        if sys.platform == "emscripten":
+            if self.ready:
+                self.game.set_state(Start(self.game))
+        else:
+            if self.ready:
+                self.thread.join()
+                self.game.set_state(Start(self.game))
     
     def enter_state(self):
-        self.thread = threading.Thread(target=self.load_assets)
-        self.thread.start()
+        if sys.platform == "emscripten":
+            self.load_assets()
+        else:
+            self.thread = threading.Thread(target=self.load_assets)
+            self.thread.start()
     
     def exit_state(self):
         self.game.fadein()
