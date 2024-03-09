@@ -1,9 +1,9 @@
-import pygame
-import configs
 from interfaces.state import State
 from objects.background import Background
 from objects.slider import Slider
 from objects.text import Text
+import pygame
+import configs
 
 class Option(State):
     """ Option state class
@@ -24,6 +24,8 @@ class Option(State):
         self.create_sliders()
         
     def create_sliders(self):
+        """ Create sliders objects
+        """
         self.font = "bit.ttf"
         self.music_text = Text(configs.SCREEN_WIDTH // 2 - 50, configs.SCREEN_HEIGHT // 8, "Musics :", self.font, 15, pygame.color.Color("white"))
         self.music_slider = Slider((configs.SCREEN_WIDTH // 2, configs.SCREEN_HEIGHT // 4), (configs.SLIDER_WIDTH, configs.SLIDER_HEIGHT), self.game.music_volume, configs.SLIDER_MIN, configs.SLIDER_MAX)
@@ -37,6 +39,11 @@ class Option(State):
         self.sprites.add(self.sound_slider)
     
     def change_selection(self, direction):
+        """ Change button selection
+
+        Args:
+            direction (_type_): int
+        """
         self.selected_slider = (self.selected_slider + direction) % len(self.sliders)
         for i, slider in enumerate(self.sliders):
             slider.active = (i == self.selected_slider)
@@ -70,6 +77,8 @@ class Option(State):
                     self.game.sound_volume = self.sound_slider.get_value()
                 
     def handle_slider_event(self, event):
+        """ handle slider event
+        """
         mx, my = pygame.mouse.get_pos()
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             self.game.set_state(self.previous_state)

@@ -32,6 +32,8 @@ class Text(pygame.sprite.Sprite):
         self.rect.y = y
         
     def rerender(self):
+        """ Rerender text surface with text property
+        """
         self.image = self.image = self.font.render(self.text, self.antialias, self.color)
         
     def update(self, dt):

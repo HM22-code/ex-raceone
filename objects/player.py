@@ -38,6 +38,8 @@ class Player(pygame.sprite.Sprite):
             self.image = self.image_down
                 
     def shoot(self):
+        """ Shoot bullet command
+        """
         bullet = Bullet(self.rect.right, self.rect.centery)
         bullet.add(self.bullets)
         bullet.add(self.sprites)

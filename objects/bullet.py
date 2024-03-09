@@ -22,10 +22,14 @@ class Bullet(pygame.sprite.Sprite):
         self.import_animations()
         
     def import_animations(self):
+        """ Import animation frames
+        """
         for i in range(0, self.frame_number):
             self.animation.append(utils.assets.get_sprite("bullet-"+str(i)+".png"))
     
     def animate(self, fps, loop=True):
+        """ Play animation
+        """
         self.frame_index += fps
         if self.frame_index >= len(self.animation) - 1:
             if loop:

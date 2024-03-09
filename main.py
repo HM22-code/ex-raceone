@@ -1,18 +1,17 @@
+from interfaces.state import State
+from enums.events import Events
+from states.boot import Boot
+import utils.assets
 import pygame
 import configs
 import asyncio
-from interfaces.state import State
-from enums.events import Events
-import utils.assets
-import sys, platform
-from states.boot import Boot
+import sys
 
 class Game:
     """ Game class
     """
     
     def __init__(self):
-        # Init game running
         self.running = True
         # Initialize Pygame
         pygame.mixer.pre_init(44100, 16, 2, 4096)
@@ -22,14 +21,13 @@ class Game:
             self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT))
         else:
             self.screen = pygame.display.set_mode((configs.SCREEN_WIDTH, configs.SCREEN_HEIGHT), pygame.FULLSCREEN|pygame.SCALED)
-        # Screen options
         pygame.display.set_icon(utils.assets.load_sprite("favicon.png"))
         pygame.display.set_caption(configs.TITLE)
         # Clock to control FPS
         self.clock = pygame.time.Clock()
+        # Init game properties
         self.music_volume = configs.MUSIC_VOLUME
         self.sound_volume = configs.SOUND_VOLUME
-        # Init game stats
         self.score = 0
         self.life = 3
         # Events timer
@@ -97,7 +95,7 @@ class Game:
             await asyncio.sleep(0)
               
     def quit(self):
-        """ Quit game program
+        """ Quit game
         """
         self.running = False
         pygame.quit()

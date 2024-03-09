@@ -25,7 +25,11 @@ class LoadingBar(pygame.sprite.Sprite):
         pygame.draw.rect(self.image, self.bar_color, (0, 0, bar_width, self.rect.height))
 
     def set_value(self, value):
-        # Set the value of the loading bar
+        """ Set the value of the loading bar
+
+        Args:
+            value (_type_): int
+        """
         self.value = value
         if self.value < 0:
             self.value = 0

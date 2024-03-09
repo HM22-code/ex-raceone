@@ -87,5 +87,13 @@ def load_font(file, size):
     
         
 def get_font(name):
+    """ Get font from name
+
+    Args:
+        name (_type_): string
+
+    Returns:
+        _type_: font
+    """
     return fonts[name]
     

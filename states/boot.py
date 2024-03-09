@@ -1,15 +1,20 @@
-import pygame
-import configs
-import threading
-import sys, platform
 from objects.loading_bar import LoadingBar
-import utils.assets
 from objects.logo import Logo
 from objects.text import Text
 from interfaces.state import State
 from states.start import Start
+import utils.assets
+import pygame
+import configs
+import threading
+import sys
 
 class Boot(State):
+    """ Boot state class
+
+    Args:
+        State (_type_): state
+    """
     
     def __init__(self, game):
         super().__init__(game)
@@ -25,6 +30,8 @@ class Boot(State):
         self.thread = None
     
     def load_assets(self):
+        """ Load game assets and update loading bar
+        """
         self.loading_bar.set_value(self.loading_bar.value + configs.LOADING_BAR_STEP)
         utils.assets.load_sprites()
         self.loading_bar.set_value(self.loading_bar.value + configs.LOADING_BAR_STEP)

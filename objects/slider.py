@@ -34,12 +34,27 @@ class Slider(pygame.sprite.Sprite):
             pygame.draw.rect(self.image, pygame.color.Color("black"), self.handle_rect)
         
     def move_slider(self, mouse_pos):
+        """ Move slider from mouse position
+
+        Args:
+            mouse_pos (_type_): int
+        """
         self.handle_rect.centerx = mouse_pos[0] - self.slider_left_pos
     
     def set_slider(self, value):
+        """ Move slider from value
+
+        Args:
+            value (_type_): int
+        """
         self.handle_rect.centerx = self.handle_rect.centerx + value
         
     def get_value(self):
+        """ Get slider value
+
+        Returns:
+            _type_: float
+        """
         val_range = self.slider_right_pos - self.slider_left_pos
         button_val = self.handle_rect.centerx
         return (button_val / val_range) * (self.max-self.min) + self.min

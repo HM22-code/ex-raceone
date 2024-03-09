@@ -1,7 +1,3 @@
-import pygame
-import utils.assets
-import sys, platform
-import configs
 from objects.button import Button
 from states.ending import Ending
 from objects.background import Background
@@ -9,6 +5,10 @@ from objects.title import Title
 from interfaces.state import State
 from states.level import Level
 from states.option import Option
+import utils.assets
+import pygame
+import configs
+import sys
 
 class Start(State):
     """ Start state class
@@ -39,15 +39,23 @@ class Start(State):
             self.enter_sound = utils.assets.get_audio("enter.wav")
         
     def start(self):
+        """ Go to Level state
+        """
         self.game.set_state(Level(self.game))
     
     def options(self):
+        """ Go to Option state
+        """
         self.game.set_state(Option(self.game))
     
     def credits(self):
+        """ Got to Ending state
+        """
         self.game.set_state(Ending(self.game))
     
     def quit(self):
+        """ Quit game
+        """
         self.game.quit()
         
     def create_buttons(self):
@@ -97,6 +105,11 @@ class Start(State):
             self.buttons.append(button)
             
     def change_selection(self, direction):
+        """ Change button selection
+
+        Args:
+            direction (_type_): int
+        """
         self.select_sound.play()
         self.selected_button = (self.selected_button + direction) % len(self.buttons)
         for i, button in enumerate(self.buttons):
@@ -127,6 +140,8 @@ class Start(State):
                     self.quit()
                     
     def handle_button_event(self, event):
+        """ handle button event
+        """
         for button in self.buttons:
             if button.rect.collidepoint(pygame.mouse.get_pos()):
                 if event.type == pygame.MOUSEBUTTONDOWN:

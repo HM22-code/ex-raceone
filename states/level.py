@@ -1,16 +1,16 @@
-import pygame
 from objects.parallax_background import ParallaxBackground
 from objects.parallax_layer import ParallaxLayer
-from enums.events import Events
+from objects.player import Player
 from objects.enemy import Enemy
 from objects.text import Text
+from enums.events import Events
+from interfaces.state import State
 from states.over import Over
 import utils.assets
-import sys, platform
+import pygame
 import random
 import configs
-from objects.player import Player
-from interfaces.state import State
+import sys
 
 class Level(State):
     """ Level state class
@@ -38,7 +38,7 @@ class Level(State):
         self.player = Player(self.bullets, self.sprites)
         self.players.add(self.player)
         self.sprites.add(self.player)
-        # Game stats
+        # Game level properties
         self.game.score = 0
         self.game.life = 3
         self.font = "score.ttf"
@@ -89,6 +89,8 @@ class Level(State):
             self.life_ui.text = str(self.game.life)+" x A"
     
     def gameover(self):
+        """ Go to Over state
+        """
         self.player.kill()
         self.gameover_sound.play()
         self.game.fadein()

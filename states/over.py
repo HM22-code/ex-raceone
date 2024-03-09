@@ -1,7 +1,7 @@
-import pygame
-import configs
 from interfaces.state import State
 from objects.text import Text
+import pygame
+import configs
 
 class Over(State):
     """ Over state class

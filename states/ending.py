@@ -1,11 +1,10 @@
-import pygame
-from objects.text import Text
-import utils.assets
-import sys, platform
-import configs
-from interfaces.state import State
 from objects.background import Background
-
+from objects.text import Text
+from interfaces.state import State
+import utils.assets
+import pygame
+import configs
+import sys
 
 class Ending(State):
     """ Ending state class
