@@ -1,135 +1,83 @@
 # ex-raceone
 
-A retro side scroller game made with pygame
+ex-raceone is a retro endless space shooter game made with pygame, drawing inspiration from classic arcade titles. Both web and Windows versions are available.
+Survive the onslaught of enemies while protecting your ship and aiming to stay alive. Earn points by destroying enemy ships.
 
-## Look and feel
+![Screenshot 1](screenshot-1.png)
 
-- NES style graphics 8 bit
-- fullscreen for widescreen diplays
-- HD resolutions must be divisible by the games resolution so scaling works
-- Native resolution is (256*240)
+![Screenshot 2](screenshot-2.png)
 
-## Guides & Advises
+## How to play
 
-### No Repeats
+**[Arrow Keys]** - Move Ship
 
-If code is repeated, make a class or function of it
+**[Space]** - Shoot Lasers
 
-### Use inheritance
+## How to Download
 
-Sprite > Static Entity > Dynamic Entity > Player
-
-### Resolution
-
-We will implement a system to scale the game and increase the native resolution of the game itself on the display.
-We will also go over if the user chooses to turn fullscreen mode on.
-
-### Layers
-
-- BG 3
-- BG 2
-- BG 1
-- Enemy
-- Player
-- Projectiles
-- UI
-
-### Game controller
-
-- The controller is the core of the entire program
-- The program pretty much start with the controller
-- The controller contain the main game loop
-- The controller contains and execute every game state (menu, level, ending, ...)
-- It contains the logic for how to swap these state when necessary and how to clean them up
-
-### State system
-
-- Create a state class that contain all the logic necessary for states (game state, entity state)
-- Every dynamic entity will have a stateGroup object that contains all of there states
-The entitity can commands to this state group, and the state group will take care of its logic
-
-### Animation system
-
-- Every Dynamic entity will have an animation group similar to the state group
-- The group will contain a list of all possible animation cycles and handle animation
-- It will contains a function for sprite sheet to cut the sprites to an animation object
-- Doing things this way with the animation state objects, removes a ton of code that would have to go into the entity classes themselves and makes it much easier to program once it is all implemented
-
-### Constants file
-
-- This file is like the .ini file found with a ton of games. it contains a ton of static variables that are used all through out your program. Window information, joystick information, game state names, directory information, fps, ...
-
-### Event handler
-
-- The eevent handler object will contain all the code for handling user input
-- It will also have a joystick system in it that will work with any type of direct input or xinput device
-- It will also be using a command design pattern for encapsulating the button input into their own object
-- This will allow to give users an option to reassign buttons in game if they would like
-
-## Brainstorming
-
-- Side scroller game
-  - style scrolling permanent
-  - style retro arcade 8-bit 16-bit
-  - style jetpack joyride
-
-- Objectifs aller le plus loin possible
-  - niveaux prédéfinis / construit  avec tiles ?
-  - éviter les obstacles
-  - side scrolling parallax
-
-- Environnement et ressources:
-  - futuriste,
-  - hyper dynamique,
-  - retro,
-  - cyberpunk
-
-- Style pyxel art + Spritessheet à prévoir
-
-- Music pack de music Retro
-
-- Premier jeux:
-  - Moteur de jeux: Pygame
-  - Langage de prog: Python
-
-- Menu de sélection
-  - Hub avec les différents niveaux
-  - représenteé par des planetes animées
-  - avec le planete generator
-
-- Idéees
-  - voir le déclun de la terre
-  - planetes futuriste et post apo cyber
-  - lore + commandes expliquer bulle de texte sur fondu
-
-- Crédits
-
-- ++ Bonus:
-  - Score
-  - Menu Option
-
-- 3 différents niveaux Difficulté croissante
-
-- Esquiver des obstacles
-
-- Système de vie:
-  - Barre de vie
-  - Véhicule
-
-- Avant de commencer un niveau Sprites:
-  - READY
-  - GO
-
-- Vaisseau Terrestre
-
-- Possibilité de saut en cloche/vague
-
-- Fin sur credit
-  - fond panorama sur les wastelands
-  - scrolling vers le ciel
-  - fin
+Simply download the zip file and extract it to your desired location. Then run the `ex-raceone.exe` and dive into the action! Enjoy! Please feel free to let me know what you think! I truly appreciate any feedback.
 
 ## Credits
 
-ansimuz - graphics
-Juhani Junkala - musics & sounds
+[ansimuz](https://ansimuz.itch.io/) - Graphics
+
+[Juhani Junkala](https://opengameart.org/users/subspaceaudio) - Musics & Sounds
+
+## Look & feel
+
+- NES-style 8-bit graphics
+- Fullscreen support for widescreen displays
+- Native resolution is 256x240
+- Compatible with both web and desktop platforms
+
+## Build
+
+- Windows (PyInstaller)
+- Web (Pygbag)
+
+## Guides & Advises for pygame development
+
+### Avoid Repeats
+
+Eliminate repetitive code by creating classes or functions.
+
+### Use Inheritance
+
+Implement inheritance where applicable, such as Sprite -> Player, State -> Level.
+
+### Resolution
+
+Implement a scaling system to increase the native resolution of the game on display, including support for fullscreen mode.
+
+### Layers
+
+Organize game elements into layers:
+
+- Background
+- Obstacles
+- Player
+- UI
+
+### Game Controller
+
+The controller is the core of the program, initiating the main game loop.
+It manages game states (menu, level, ending) and facilitates state transitions.
+
+### State System
+
+Utilize a state class to manage game and entity states.
+Entities interact with a state group for logic execution.
+Organize your game with game states.
+
+### Constants File
+
+Store static variables such as window information and game state names in a constants file.
+
+### Event Handler
+
+Handle user input.
+Implement a command design pattern for encapsulating button inputs.
+
+### Animation System
+
+Implement an animation function for dynamic entities.
