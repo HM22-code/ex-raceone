@@ -30,6 +30,20 @@ Simply download the zip file and extract it to your desired location. Then run t
 - Native resolution is 256x240
 - Compatible with both web and desktop platforms
 
+## Usage
+
+Clone this repo :
+
+    git clone https://github.com/HM22-code/ex-raceone.git
+
+Install PyGame if not already :
+
+    pip install pygame
+
+And run the main file :
+
+    main.py
+
 ## Build
 
 - Windows (PyInstaller)
